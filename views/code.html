@@ -8,12 +8,12 @@
       <link rel="stylesheet" text="text/css" href="css/style.css">
     </head>
     <body ng-controller="UsersController">
-      <form name="userCode" action="/ingreso" method="POST">
+      <form name="userCode" action="/ingreso/#{phone}" method="POST">
         <div class="yami">
           <div class="form-group">
-            <img src="img/9990421.png" alt="Logo Yami" ><br><br>
-            <h3>Ingrese su código</h3><br><br>
-              <input name="code" type="text" ng-model="code" pattern=".{4,}" required >
+            <img src="img/logo-yami.jpg" alt="Logo Yami" ><br><br>
+            <h3>Ingrese su código </h3><br><br>
+            <input name="code" type="text" ng-model="code" pattern=".{4,}" required >
             <br><br>
             <button class="btn btn-primary" ng-disabled="userCode.$invalid" type="submit">Ingresar</button>
           </div>
@@ -25,5 +25,7 @@
       <script type="text/javascript" src="js/angular.min.js"></script>
       <script type="text/javascript" src="js/bootstrap.min.js"></script>
       <script type="text/javascript" src="js/controller.js"></script>
+
+
     </body>
   </html>

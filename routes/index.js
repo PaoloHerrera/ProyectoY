@@ -3,6 +3,7 @@
 var yami = require('../models/yami'),
     express = require('express'),
     path = require('path'),
+    sms = require('./sendsms'),
     router = express.Router()
 
 function error404(req,res,next){
@@ -26,7 +27,7 @@ router
       //usa la ruta del home
       .get('/', (req, res, next) =>{
 
-        res.sendFile(path.resolve('./views/index.html'))
+        res.render('index')
 
       })
       //envía los datos del usuario (fono) por post a la interfaz código
@@ -58,20 +59,18 @@ router
                 }
                 //inserta los datos a la base de datos
                 yami.query('INSERT INTO Usuario SET ?', newUser, (err, rows) => {
-                  res.sendFile(path.resolve('./views/code.html'))
+                  res.render('code', { phone: phone.phone })
                 })
               }
               //si el usuario está creado
               else
               {
-                let actUser =
-                {
-                    fechaUltimoLogin : new Date()
-                }
+                let actUser = {fechaUltimoLogin : new Date()}
+
                 //actualiza la fecha de su ultimo login
                 yami.query('UPDATE Usuario SET ? WHERE phone = ?', [actUser,phone.phone],
                       (err, rows) =>{
-                        res.sendFile(path.resolve('./views/code.html'))
+                        res.render('code', { phone: phone.phone })
                       })
               }
             }
@@ -79,44 +78,50 @@ router
         })
       })
 
-      .post('/ingreso', (req, res, next) => {
+      .post('/ingreso/:phone', (req, res, next) => {
         req.getConnection((err, yami) =>{
           let user = {
-            //phone : req.
+            phone : req.params.phone
           }
           let code = {
             code : req.body.code
           }
-          console.log(user.phone)
-          console.log(code.code)
           //verifica si el código ingresado es correcto
-          yami.query('SELECT * FROM Codigo Where codigo = ?', code.code, (err, rows) => {
+          yami.query('SELECT * FROM Codigo Where codigo = ?', code.code, (err, row) => {
             if(err)
             {
               throw(err)
             }
             else
             {
-              let codeBDD = {
-                data : rows
-              }
               //si no encuentra el código
-              console.log(codeBDD.data)
-
-              if(codeBDD.data.length == 0)
+              if(row.length == 0)
               {
                 res.send('El código no es válido')
               }
               //si el código ya está asignado
-            /*  else if(codeBDD.data.idUsuario != null)
+              else if(row[0].idUsuario != null)
               {
                 res.send('El código ya no es válido')
               }
               //si el código no está asignado a un usuario
-              else if(code.data.idUsuario == null)
+              else if(row[0].idUsuario == null)
               {
-                //yami.query('UPDATE ')
-              }*/
+                yami.query('SELECT idUsuario FROM Usuario WHERE phone = ?', user.phone,
+                    (err, idUser) => {
+
+                      yami.query('UPDATE Codigo SET idUsuario = ? WHERE codigo = ?',
+                          [ idUser[0].idUsuario, code.code], (err, rows) => {
+                            console.log(idUser[0].idUsuario)
+                            res.send('Felicidades tu código es válido')
+                            //enviar SMS
+                            sms.phone(user.phone)
+                            sms.mess('YAMI: Felicidades, te has ganado un punto para jugar en la ruleta. Pronto te enviaremos un mensaje para que puedas jugar.')
+                            sms.mandarSMS()
+
+                          })
+                    } )
+              }
             }
           })
         })
