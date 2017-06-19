@@ -3,8 +3,8 @@
 var conn = require('./yami-connection'),
     CodeModel = () => { }
 
-CodeModel.getCode = (data, cb) => conn.query('SELECT * FROM Codigo Where codigo = ?', data, cb)
+CodeModel.getCode = (data, cb) => conn.query('SELECT * FROM Code Where code = ?', data, cb)
 
-CodeModel.updateCode = (data1, data2, cb) => conn.query('UPDATE Codigo SET idUsuario = ? WHERE codigo = ?',[data1,data2], cb)
+CodeModel.updateCode = (data1, data2, cb) => conn.query('UPDATE Code SET idUser = ? WHERE code = ?',[data1,data2], cb)
 
 module.exports = CodeModel

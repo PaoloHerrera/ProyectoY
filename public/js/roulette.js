@@ -1,11 +1,11 @@
 (function($) {
 	var Roulette = function(options) {
 		var defaultSettings = {
-			maxPlayCount : null, // x >= 0 or null
+			maxPlayCount : 1, // x >= 0 or null
 			speed : 10, // x > 0
 			stopImageNumber : null, // x >= 0 or null or -1
 			rollCount : 3, // x >= 0
-			duration : 3, //(x second)	
+			duration : 10, //(x second)
 			stopCallback : function() {
 			},
 			startCallback : function() {
@@ -44,7 +44,7 @@
 			p.isStop = defaultProperty.isStop;
 			p.topPosition = defaultProperty.topPosition;
 		}
-		
+
 		var slowDownSetup = function() {
 			if(p.isSlowdown){
 				return;
@@ -87,7 +87,7 @@
 			if (p.topPosition >= p.totalHeight) {
 				p.topPosition = p.topPosition - p.totalHeight;
 			}
-			// TODO IE 
+			// TODO IE
 			if (p.isIE) {
 				p.$rouletteTarget.css('top', '-' + p.topPosition + 'px');
 			} else {
@@ -114,7 +114,7 @@
 						// set BLANK image
 						this.src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==";
 						this.src = src;
-					}  
+					}
 				});
 			}
 			$roulette.find('div').remove();
@@ -137,7 +137,7 @@
 				return;
 			}
 			p.stopImageNumber = $.isNumeric(defaultProperty.originalStopImageNumber) && Number(defaultProperty.originalStopImageNumber) >= 0 ?
-									Number(defaultProperty.originalStopImageNumber) : Math.floor(Math.random() * p.imageCount); 
+									Number(defaultProperty.originalStopImageNumber) : Math.floor(Math.random() * p.imageCount);
 			p.startCallback();
 			roll();
 			setTimeout(function(){
@@ -160,8 +160,8 @@
 			p = $.extend(p, options);
 			p.speed = Number(p.speed);
 			p.duration = Number(p.duration);
-			p.duration = p.duration > 1 ? p.duration - 1 : 1; 
-			defaultProperty.originalStopImageNumber = options.stopImageNumber; 
+			p.duration = p.duration > 1 ? p.duration - 1 : 1;
+			defaultProperty.originalStopImageNumber = options.stopImageNumber;
 		}
 
 		var ret = {

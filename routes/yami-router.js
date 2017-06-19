@@ -15,6 +15,7 @@ router
 
       .post('/ingreso/:phone', CodeController.getCode)
 
+      .get('/ruleta/:phone/:code', YamiController.addRoulette)
 
       .use(YamiController.error404)
 

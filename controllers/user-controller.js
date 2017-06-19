@@ -24,7 +24,7 @@ UserController.getUser = (req, res, next) => {
         let newUser =
         {
           phone : phone.phone,
-          fechaUltimoLogin : new Date()
+          dateLastLogin : new Date()
         }
         //invoca al modelo de insertar usuario
         UserModel.insertUser( newUser, (err) =>{
@@ -41,14 +41,14 @@ UserController.getUser = (req, res, next) => {
       //si el usuario está creado
       else {
         //si el usuario no está baneado
-        if(user.data[0].baneado == 0) {
+        if(user.data[0].ban == 0) {
           //actualiza la fecha de su ultimo login
           let actUser = {
             phone : phone.phone,
-            fechaUltimoLogin : new Date()
+            dateLastLogin : new Date()
           }
           //invoca al modelo de actualizar un usuario
-          UserModel.updateDateUser(actUser.fechaUltimoLogin, actUser.phone, (err) => {
+          UserModel.updateDateUser(actUser.dateLastLogin, actUser.phone, (err) => {
             if(err)
             {
               throw(err)
@@ -63,14 +63,14 @@ UserController.getUser = (req, res, next) => {
         else {
           //verificar si han pasado 3 horas después del baneo
           let dateNow = new Date()
-          let difference = dateNow.getTime() - user.data[0].fechaUltimoLogin.getTime()
+          let difference = dateNow.getTime() - user.data[0].dateLastLogin.getTime()
           var hoursDifference = Math.floor(difference/1000/60/60)
           //si el usuario ha estado baneado por 6 horas o más se desbanea
           if(hoursDifference >= 6){
             let desbanUser ={
-              fechaUltimoLogin : dateNow,
-              baneado : 0,
-              intentos : 0
+              dateLastLogin : dateNow,
+              ban : 0,
+              fails : 0
             }
             //invoca al modelo de update User
             UserModel.updateUser(desbanUser, phone.phone, (err) => {
@@ -90,6 +90,7 @@ UserController.getUser = (req, res, next) => {
     }
   })
 }
+
 
 //Controlador de insertar un nuevo usuario
 UserController.insertUser = (req, res, next) => {
