@@ -8,9 +8,177 @@ var YamiModel = require('../models/yami-model'),
     LocalModel = require('../models/local-model'),
     PrizeModel = require('../models/prize-model'),
     PrizeDetailModel = require('../models/prizedetail-model'),
+    short = require('./shortURL'),
+    sms = require('./sendsms'),
     YamiController = () => { }
 
 YamiController.addForm = (req, res, next) => res.render('index')
+
+YamiController.addWinPrize = (req, res, next) => {
+	console.log('body: ' + JSON.stringify(req.body))
+  let data = req.body
+
+  //Asigna el código como usado
+  console.log(data.code)
+  let actCode = {
+    codeUsed : 1,
+    usedDate : new Date()
+  }
+  CodeModel.updateCode( actCode, data.code, (err) => {
+    if (err) {
+      throw(err)
+    }
+    else {
+      //Asigna el premio al usuario
+      let actPrize = {
+        User_idUser : data.idUser,
+        lastTryDate : new Date()
+      }
+      PrizeModel.updatePrize(actPrize, data.idPrize , (err) => {
+        if (err) {
+          throw(err)
+        }
+        else {
+          //Generar short URL
+          short.shorturl("http://localhost:3000/premio/"+data.idUser+"/"+data.idPrize, (err, body) => {
+            if (err) {
+              throw(err)
+            }
+            else {
+              console.log(body)
+              //mandar SMS
+              sms.phone(data.phone)
+              sms.mess(data.localName + ' : Felicidades te has ganado un/a ' + data.prizeName +
+              ' en '+data.localName+' '+data.branchName+'\nPara canjear tu premio presiona el link: \n' + body )
+              sms.mandarSMS()
+              res.send('SUCCESS!!!')
+            }
+          });
+        }
+      })
+    }
+  })
+}
+
+YamiController.addPrize = (req, res, next) => {
+  let idUser = req.params.iduser,
+      idPrize = req.params.idprize
+
+  //Consulta si es que el usuario y el premio están asignados
+  PrizeModel.getPrizeUser(idPrize, (err, row) => {
+    if(err){
+      throw(err)
+    }
+    else {
+      let prize = row[0]
+
+      //verifica si el usuario y el premio están asignados, y si el premio no ha sido recibido
+      if( idUser == prize.User_idUser && prize.receivedPrize == 0){
+        //extrae el detalle del premio
+        PrizeDetailModel.getPrizeDetail(prize.PrizeDetail_idPrizeDetail, (err, detailRow) => {
+          if(err){
+            throw(err)
+          }
+          else {
+            let detail = detailRow[0]
+            //Extrae el nombre de la sucursal
+            BranchModel.getBranch(prize.Branch_idBranch, (err, branchRow) => {
+              if(err){
+                throw(err)
+              }
+              else {
+                let branch = branchRow[0]
+                //Extrae el nombre del local
+                LocalModel.getLocal(branch.idLocal, (err, localRow) => {
+                  if(err){
+                    throw(err)
+                  }
+                  else {
+                    let local = localRow[0]
+
+                    res.render('congratulations', { idUser: idUser, idPrize: prize.idPrize, prizeName : detail.prizeName, prizeImage : detail.prizeImage, branchName : branch.branchName, localName : local.localName})
+                  }
+                })
+              }
+            })
+          }
+        })
+      }
+    }
+  })
+
+  console.log(idPrize)
+
+}
+
+YamiController.prizeConfirm = (req, res, next) => {
+  let idPrize = req.params.idPrize,
+      idUser = req.params.idUser
+
+  //Consulata en la base de datos el premio
+  PrizeModel.getPrizeUser(idPrize, (err, row) => {
+    if (err) {
+      throw(err)
+    }
+    else {
+      let prize = row[0]
+
+      //verifica si la id del usuario coincide en el premio y que el premio no haya sido cobrado
+      if( idUser == prize.User_idUser && prize.receivedPrize == 0)
+      {
+        //extrae los detalles del premio
+        PrizeDetailModel.getPrizeDetail(prize.PrizeDetail_idPrizeDetail, (err, detailRow) => {
+          if (err) {
+            throw(err)
+          }
+          else {
+            res.render('prizeConfirm', {prizeImage : detailRow[0].prizeImage, idPrize: prize.idPrize, prizeName : detailRow[0].prizeName, idUser: idUser, localName: req.params.localName, branchName: req.params.branchName})
+          }
+        })
+
+      }
+      else {
+        res.send('error')
+      }
+
+    }
+  })
+}
+
+YamiController.prizeSuccess = (req, res, next) => {
+  let idPrize = req.params.idPrize
+  //el premio es cobrado
+  let actPrize = {
+    receivedPrize : 1,
+    receivedDate : new Date()
+  }
+
+  PrizeModel.updatePrize(actPrize, idPrize, (err) => {
+    if(err){
+      throw(err)
+    }
+    else {
+      //Extrae la información del premio
+      PrizeModel.getPrizeUser( idPrize, (err, row) => {
+        if (err) {
+          throw(err)
+        }
+        else {
+          let prize = row[0]
+          //Extrae el detalle del premio
+          PrizeDetailModel.getPrizeDetail( prize.PrizeDetail_idPrizeDetail, (err, detailRow) => {
+            if(err){
+              throw(err)
+            }
+            else {
+              res.render('prizeSuccess', {prizeImage: detailRow[0].prizeImage})
+            }
+          })
+        }
+      })
+    }
+  })
+}
 
 YamiController.addRoulette = (req, res, next) => {
 
@@ -98,7 +266,7 @@ YamiController.addRoulette = (req, res, next) => {
                                   //consulta los premios
                                   for (var i = 0; i < prize.data.length; i++) {
                                     //Guarda el premio si es que está disponible
-                                    if (prize.data[i].receivedPrize == 0) {
+                                    if (prize.data[i].User_idUser == null) {
                                       prizeFocus = prize.data[i]
                                       break
                                     }
@@ -112,9 +280,19 @@ YamiController.addRoulette = (req, res, next) => {
                                         throw(err)
                                       }
                                       else {
-                                        console.log('Hola Mundo')
+
                                         //Probabilidad de ganar el premio
-                                        res.render('roulette')
+                                        res.render('roulette', {
+                                          idUser : row[0].idUser,
+                                          userPhone : row[0].phone,
+                                          code : code,
+                                          localName : local.data[0].localName,
+                                          branchName : branch.data[0].branchName,
+                                          prizeId : prizeFocus.idPrize,
+                                          prizeName : detailrow[0].prizeName,
+                                          prizeImage : detailrow[0].prizeImage,
+                                          prizeProb : 0
+                                        })
                                       }
                                     })
                                   }

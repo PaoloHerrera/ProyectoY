@@ -1,5 +1,4 @@
 $(function(){
-
 	$('.roulette').find('img').hover(function(){
 		console.log($(this).height());
 	});
@@ -27,10 +26,30 @@ $(function(){
 			$('#stopImageNumber').spinner('enable');
 			$('.start').removeAttr('disabled');
 			$('.stop').attr('disabled', 'true');
+
+			//redirecciona a la página según los datos
+			//Si no gana manda al usuario a otra página
+			if(prob != 0){
+				window.location.href = "/layout";
+			}
+			else {
+				$.post("http://localhost:3000/winprize",{ phone: phone,
+					code: code,
+					idUser: idUser,
+					idPrize: idPrize,
+					prizeName: prizename,
+					localName: localName,
+					branchName: branchName
+				},
+				function(data, status){
+					alert('Felicidades!!!! te ganaste un/a ' + prizename + '\n Te llegará un SMS con tu premio.' );
+				});
+			}
 		}
 
 	}
 	var rouletter = $('div.roulette');
+
 	rouletter.roulette(p);
 	$('.stop').click(function(){
 		var stopImageNumber = $('.stopImageNumber').val();
@@ -40,14 +59,14 @@ $(function(){
 		rouletter.roulette('stop');
 	});
 	$('.stop').attr('disabled', 'true');
-	$('.start').click(function(){
+	$('.start').click(function(req, res, next){
 		rouletter.roulette('start');
 	});
 
 	var updateParamater = function(){
 		p['speed'] = 30;
 		p['duration'] = 10;
-		p['stopImageNumber'] = -1;
+		p['stopImageNumber'] = prob;
 		rouletter.roulette('option', p);
 	}
 	var updateSpeed = function(speed){

@@ -17,6 +17,14 @@ router
 
       .get('/ruleta/:phone/:code', YamiController.addRoulette)
 
+      .get('/premio/:iduser/:idprize', YamiController.addPrize)
+
+      .get('/confirmarPremio/:prizeName/:idPrize/:idUser/:localName/:branchName', YamiController.prizeConfirm)
+
+      .post('/confirmarPremio/:prizeName/:idPrize/:idUser/:localName/:branchName', YamiController.prizeSuccess)
+
+      .post('/winprize', YamiController.addWinPrize)
+
       .use(YamiController.error404)
 
 module.exports = router

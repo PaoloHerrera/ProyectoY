@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+  <html ng-app="app">
+    <head>
+      <meta charset="utf-8">
+      <title>Yami - Felicidades</title>
+      <meta name="viewport" content-type="application/javascript" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+      <link rel="stylesheet" type="text/css" href="../../../../../css/bootstrap.min.css">
+      <link rel="stylesheet" text="text/css" href="../../../../../css/style.css">
+    </head>
+    <body>
+      <form name="confirmation" action="/confirmarPremio/#{prizeName}/#{idPrize}/#{idUser}/#{localName}/#{branchName}" method="POST">
+        <div class="yami">
+          <div class="form-group">
+            <img src="../../../../../img/9990421.png" alt="Logo Yami" ><br><br>
+            <img src="#{prizeImage}" class="img-rounded" width="460" height="345" alt="Premio">
+            <h3> Al presionar confirmar estás confirmando que el cliente recibió su premio</h3><br><br>
+              <button class ="btn btn-danger" onclick="window.history.back();"> Cancelar</button>
+            <button class="btn btn-success" type"submit">Confirmar</button>
+          </div>
+        </div>
+
+      </form>
+
+      <script type="text/javascript" src="../../../../../js/jquery-3.2.1.js"></script>
+      <script type="text/javascript" src="../../../../../js/angular.min.js"></script>
+      <script type="text/javascript" src="../../../../../js/bootstrap.min.js"></script>
+    </body>
+  </html>

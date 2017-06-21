@@ -80,8 +80,11 @@ CodeController.getCode = (req, res, next) => {
                 else {
                   console.log(_user)
                 }
+                let actCode ={
+                  idUser : _user[0].idUser
+                }
                 //asigna el código al usuario
-                CodeModel.updateCode(_user[0].idUser, code.code, (err) => {
+                CodeModel.updateCode(actCode, code.code, (err) => {
                   if(err)
                   {
                     throw(err)
@@ -89,7 +92,7 @@ CodeController.getCode = (req, res, next) => {
                   else
                   {
                     //Generar short URL
-                    short.shorturl("http://localhost:3000/"+_user[0].phone+"/"+code.code, (err, body) => {
+                    short.shorturl("http://localhost:3000/ruleta"+_user[0].phone+"/"+code.code, (err, body) => {
                       if (err) {
                         throw(err)
                       }
@@ -97,8 +100,8 @@ CodeController.getCode = (req, res, next) => {
                         console.log(body)
                         //enviar SMS
                         sms.phone(_user[0].phone)
-                        sms.mess('YAMI: Felicidades!!!, puedes jugar a la ruleta presionando este link ' + body)
-                        //sms.mandarSMS()
+                        sms.mess('YAMI: Felicidades!!!, puedes jugar a la ruleta presionando este link: \n' + body)
+                        sms.mandarSMS()
                         res.send('Felicidades ya tienes tu punto Ruleta. Te llegará un SMS con un link para que puedas jugar.')
                       }
                     })
