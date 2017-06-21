@@ -101,8 +101,8 @@ CodeController.getCode = (req, res, next) => {
                         //enviar SMS
                         sms.phone(_user[0].phone)
                         sms.mess('YAMI: Felicidades!!!, puedes jugar a la ruleta presionando este link: \n' + body)
-                        sms.mandarSMS()
-                        res.send('Felicidades ya tienes tu punto Ruleta. Te llegará un SMS con un link para que puedas jugar.')
+                        //sms.mandarSMS()
+                        res.render('pointRoulette')
                       }
                     })
 

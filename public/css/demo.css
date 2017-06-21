@@ -1,6 +1,11 @@
-body {	
+body {
 	padding-top: 60px;
 	padding-bottom: 40px;
+	background: #8bff0f; /* Old browsers */
+  background: -moz-linear-gradient(45deg, #8bff0f 0%, #91ff23 50%, #6cd800 51%, #65c400 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(45deg, #8bff0f 0%,#91ff23 50%,#6cd800 51%,#65c400 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(45deg, #8bff0f 0%,#91ff23 50%,#6cd800 51%,#65c400 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8bff0f', endColorstr='#65c400',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
 div.roulette {
 	margin-top: 35px;
@@ -10,7 +15,7 @@ div.roulette-inner {
 }
 
 
-div.roulette { 
+div.roulette {
 }
 
 div.roulette_container {
@@ -41,7 +46,7 @@ div.roulette_container {
 	border:1px solid #eee;
 	padding:10px 20px;
 	overflow-y: scroll;
-	max-height: 100px; 
+	max-height: 100px;
 }
 div.param_label {
 	margin:20px 0px 10px 0px;
