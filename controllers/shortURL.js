@@ -7,7 +7,7 @@ exports.shorturl = function(url, callback){
 
   let username = "paolo",
       password = "paolinho",
-      apiUrl = "http://localhost/yourls/yourls-api.php",
+      apiUrl = "http://45.32.162.159//yourls-api.php",
       format = "simple"
 
 var r = request({
