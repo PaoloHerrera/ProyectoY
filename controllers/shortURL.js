@@ -5,9 +5,9 @@ var request = require('request')
 
 exports.shorturl = function(url, callback){
 
-  let username = "paolo",
-      password = "paolinho",
-      apiUrl = "http://45.32.162.159//yourls-api.php",
+  let username = "paolo@yami.cl",
+      password = "paolinho1989",
+      apiUrl = "http://45.32.162.159/yourls-api.php",
       format = "simple"
 
 var r = request({

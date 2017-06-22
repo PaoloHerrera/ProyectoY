@@ -4,6 +4,6 @@
     "port" : 3306,
     "user" : "root",
     "pass" : "yami539853**",
-    "db" : "BDYami_0.3.0"
+    "db" : "BDYami_0_3_0"
   }
 }
