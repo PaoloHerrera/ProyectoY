@@ -48,8 +48,8 @@ YamiController.addWinPrize = (req, res, next) => {
               console.log(body)
               //mandar SMS
               sms.phone(data.phone)
-              sms.mess(data.localName + ' : Felicidades te has ganado un/a ' + data.prizeName +
-              ' en '+data.localName+' '+data.branchName+'\nPara canjear tu premio presiona el link: \n' + body )
+              sms.mess(data.localName + ': Felicidades te has ganado ' + data.prizeName +
+              ' en '+data.localName+' '+data.branchName+'\nPara canjear tu premio presiona el link:\n' + body )
               sms.mandarSMS()
               res.send('SUCCESS!!!')
             }
