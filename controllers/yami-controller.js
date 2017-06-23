@@ -241,7 +241,7 @@ YamiController.addRoulette = (req, res, next) => {
                         }
 
                         //Se consulta el local
-                        LocalModel.getLocalBranch(idBranch, (err, _rows) => {
+                        LocalModel.getLocal(branch.data[0].idLocal, (err, _rows) => {
                           if (err) {
                             throw(err)
                           }
@@ -279,7 +279,7 @@ YamiController.addRoulette = (req, res, next) => {
                                   if(prizeFocus != null) {
                                     //Extrae los detalles del premio
                                     PrizeDetailModel.getPrizeDetail(prizeFocus.PrizeDetail_idPrizeDetail, (err, detailrow) => {
-                                      
+
                                       if (err) {
                                         throw(err)
                                       }
