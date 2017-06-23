@@ -262,6 +262,7 @@ YamiController.addRoulette = (req, res, next) => {
                                 //Si no hay premios ingresados
                                 if(prize.data.length == 0) {
                                   //el usuario juega igual pero no puede ganar
+                                  console.log("Usted no puede ganar. No hay premios ingresados")
                                   res.render('roulette')
                                 }
                                 //Si hay premios insertados en la base de datos
@@ -303,6 +304,7 @@ YamiController.addRoulette = (req, res, next) => {
                                   //Ningún premio disponible
                                   else {
                                     //No hay probabilidad de ganar premio
+                                    console.log("Ningún premio disponible")
                                     res.render('roulette')
                                   }
                                 }
