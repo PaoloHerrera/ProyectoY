@@ -33,7 +33,7 @@ $(function(){
 				window.location.href = "/layout";
 			}
 			else {
-				$.post("http://45.32.162.159:3000/winprize",{ phone: phone,
+				$.post("http://45.32.162.159/winprize",{ phone: phone,
 					code: code,
 					idUser: idUser,
 					idPrize: idPrize,

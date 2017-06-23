@@ -40,7 +40,7 @@ YamiController.addWinPrize = (req, res, next) => {
         }
         else {
           //Generar short URL
-          short.shorturl("http://45.32.162.159:3000/premio/"+data.idUser+"/"+data.idPrize, (err, body) => {
+          short.shorturl("http://45.32.162.159/premio/"+data.idUser+"/"+data.idPrize, (err, body) => {
             if (err) {
               throw(err)
             }

@@ -92,7 +92,7 @@ CodeController.getCode = (req, res, next) => {
                   else
                   {
                     //Generar short URL
-                    short.shorturl("http://45.32.162.159:3000/ruleta/"+_user[0].phone+"/"+code.code, (err, body) => {
+                    short.shorturl("http://45.32.162.159/ruleta/"+_user[0].phone+"/"+code.code, (err, body) => {
                       if (err) {
                         throw(err)
                       }
