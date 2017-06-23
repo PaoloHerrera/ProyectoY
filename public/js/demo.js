@@ -29,6 +29,7 @@ $(function(){
 
 			//redirecciona a la página según los datos
 			//Si no gana manda al usuario a otra página
+			console.log(prob)
 			if(prob != 0){
 				window.location.href = "/layout";
 			}
