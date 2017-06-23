@@ -23,6 +23,13 @@ input[type=text]:focus {
     border: 3px solid #555;
   }
 
+input[type=button], input[type=submit], input[type=reset] {
+
+      padding: 16px 32px;
+      margin: 4px 2px;
+      cursor: pointer;
+}
+
 select {
       padding: 5px 10px;
       border: 2px solid #ccc;
