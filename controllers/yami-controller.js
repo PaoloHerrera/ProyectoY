@@ -104,6 +104,9 @@ YamiController.addPrize = (req, res, next) => {
           }
         })
       }
+      else {
+        res.render('errorcitos')
+      }
     }
   })
 
