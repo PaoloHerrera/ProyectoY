@@ -10,7 +10,7 @@ body{
 }
 
 input[type=text] {
-
+    padding: 5px 20px;
     margin: 8px 0;
     box-sizing: border-box;
     border: 2px solid #ccc;
@@ -24,11 +24,11 @@ input[type=text]:focus {
   }
 
 select {
-    padding: 16px 20px;
-    border: 2px solid #ccc;
-    border-radius: 4px;
-    background-color: #f1f1f1;
-}
+      padding: 5px 20px;
+      border: 2px solid #ccc;
+      border-radius: 4px;
+      background-color: #f1f1f1;
+  }
 
 .yami{
 height: 670px;
