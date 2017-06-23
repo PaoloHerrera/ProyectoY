@@ -279,7 +279,7 @@ YamiController.addRoulette = (req, res, next) => {
                                   if(prizeFocus != null) {
                                     //Extrae los detalles del premio
                                     PrizeDetailModel.getPrizeDetail(prizeFocus.PrizeDetail_idPrizeDetail, (err, detailrow) => {
-                                      console.log(branch.data[0].branchName)
+                                      console.log(local.data[0].localName)
                                       if (err) {
                                         throw(err)
                                       }
