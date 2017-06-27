@@ -5,6 +5,8 @@ var conn = require('./yami-connection'),
 
 UserModel.getUser = (data, cb) => conn.query('SELECT * FROM User WHERE phone = ?', data, cb)
 
+UserModel.getUserId = (data, cb) => conn.query('SELECT * FROM User WHERE idUser = ?', data, cb)
+
 UserModel.insertUser = (data, cb) => conn.query('INSERT INTO User SET ?', data, cb)
 
 UserModel.updateDateUser = (data1, data2, cb) => conn.query('UPDATE User SET dateLastLogin = ? WHERE phone = ?', [data1, data2], cb)

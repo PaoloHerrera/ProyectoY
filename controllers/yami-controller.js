@@ -149,7 +149,10 @@ YamiController.prizeConfirm = (req, res, next) => {
 }
 
 YamiController.prizeSuccess = (req, res, next) => {
-  let idPrize = req.params.idPrize
+  let idPrize = req.params.idPrize,
+      idUser = req.params.idUser,
+      localName = req.params.localName,
+      branchName = req.params.branchName
   //el premio es cobrado
   let actPrize = {
     receivedPrize : 1,
@@ -174,10 +177,30 @@ YamiController.prizeSuccess = (req, res, next) => {
               throw(err)
             }
             else {
-              setTimeout(() => {
-                console.log('Han pasado 30 seg')
-              }, 30000)
-              res.render('prizeSuccess', {prizeImage: detailRow[0].prizeImage})
+              UserModel.getUserId( idUser, (err, userRow) => {
+                if (err) {
+                  throw(err)
+                }
+                else {
+                  let user = userRow[0]
+
+                  setTimeout(() => {
+                    //Generar short URL
+                    short.shorturl("http://45.32.162.159/encuesta/"+user.idUser+"/"+prize.idPrize, (err, body) => {
+                      if (err) {
+                        throw(err)
+                      }
+                      else {
+                        //mandar SMS
+                        sms.phone(user.phone)
+                        sms.mess('Hola, queríamos agradecerte por venir hoy a nuestro local ' + localName + ' ' + branchName + '\nResponde a esta pequeña encuesta para participar por un premio\n' +  body )
+                        sms.mandarSMS()
+                      }
+                    })
+                  }, 300000)
+                  res.render('prizeSuccess', {prizeImage: detailRow[0].prizeImage})
+                }
+              })
             }
           })
         }
