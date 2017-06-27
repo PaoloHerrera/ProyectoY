@@ -174,6 +174,9 @@ YamiController.prizeSuccess = (req, res, next) => {
               throw(err)
             }
             else {
+              setTimeout(() => {
+                console.log('Han pasado 30 seg')
+              }, 30000)
               res.render('prizeSuccess', {prizeImage: detailRow[0].prizeImage})
             }
           })
