@@ -128,7 +128,7 @@ CodeController.getCode = (req, res, next) => {
                                     else {
                                       //mandar SMS
                                       sms.phone(_user[0].phone)
-                                      sms.mess('Hola, queriamos agradecerte por venir hoy a nuestro local ' + local.localName + ' ' + branch.branchName + '\nResponde a esta breve encuesta para participar por un premio\n' +  body )
+                                      sms.mess(local.localName+': Gracias por venir a nuestro local en ' + branch.branchName + '\nResponde esta breve encuesta para participar por un premio\n' +  body )
                                       sms.mandarSMS()
                                     }
                                   })
