@@ -121,13 +121,13 @@ CodeController.getCode = (req, res, next) => {
                                 //Generar time Out de la encuesta
                                 setTimeout(() => {
                                   //Generar short URL para la encuesta
-                                  short.shorturl("http://45.32.162.159/encuesta/"+_user.phone+"/"+code.code, (err, body) => {
+                                  short.shorturl("http://45.32.162.159/encuesta/"+_user[0].phone+"/"+code.code, (err, body) => {
                                     if (err) {
                                       throw(err)
                                     }
                                     else {
                                       //mandar SMS
-                                      sms.phone(_user.phone)
+                                      sms.phone(_user[0].phone)
                                       sms.mess('Hola, queriamos agradecerte por venir hoy a nuestro local ' + local.localName + ' ' + branch.branchName + '\nResponde a esta breve encuesta para participar por un premio\n' +  body )
                                       sms.mandarSMS()
                                     }
