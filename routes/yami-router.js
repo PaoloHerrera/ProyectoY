@@ -3,6 +3,7 @@
 var YamiController = require('../controllers/yami-controller'),
     UserController = require('../controllers/user-controller'),
     CodeController = require('../controllers/code-controller'),
+    SurveyController = require('../controllers/survey-controller'),
     express = require('express'),
     router = express.Router()
 
@@ -24,6 +25,8 @@ router
       .post('/confirmarPremio/:prizeName/:idPrize/:idUser/:localName/:branchName', YamiController.prizeSuccess)
 
       .post('/winprize', YamiController.addWinPrize)
+
+      //.get('/encuesta/:IdUser/:idCode', SurveyController.addForm)
 
       .use(YamiController.error404)
 

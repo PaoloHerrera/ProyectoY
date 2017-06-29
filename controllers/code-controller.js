@@ -2,6 +2,9 @@
 
 var CodeModel = require('../models/code-model'),
     UserModel = require('../models/user-model'),
+    BookModel = require('../models/book-model'),
+    BranchModel = require('../models/branch-model'),
+    LocalModel = require('../models/local-model'),
     short = require('./shortURL'),
     sms = require('./sendsms'),
     CodeController = () => { }
@@ -91,21 +94,65 @@ CodeController.getCode = (req, res, next) => {
                   }
                   else
                   {
-                    //Generar short URL
-                    short.shorturl("http://45.32.162.159/ruleta/"+_user[0].phone+"/"+code.code, (err, body) => {
+                    //Extraer la id de la sucursal
+                    BookModel.getBook(row[0].idBook, (err, bookRow) => {
                       if (err) {
                         throw(err)
                       }
                       else {
-                        console.log(body)
-                        //enviar SMS
-                        sms.phone(_user[0].phone)
-                        sms.mess('YAMI: Felicidades!!!, puedes jugar a la ruleta presionando este link: \n' + body)
-                        sms.mandarSMS()
-                        res.render('pointRoulette')
+                        let book = bookRow[0]
+
+                        //Extraer el la sucursal
+                        BranchModel.getBranch(book.idBranch, (err, branchRow) => {
+                          if (err) {
+                            throw(err)
+                          }
+                          else {
+                            let branch = branchRow[0]
+
+                            //Extrae el local
+                            LocalModel.getLocal( branch.idLocal, (err, localRow) => {
+                              if (err) {
+                                throw(err)
+                              }
+                              else {
+                                let local = localRow[0]
+
+                                //Generar time Out de la encuesta
+                                setTimeout(() => {
+                                  //Generar short URL para la encuesta
+                                  short.shorturl("http://45.32.162.159/encuesta/"+_user.phone+"/"+code.code, (err, body) => {
+                                    if (err) {
+                                      throw(err)
+                                    }
+                                    else {
+                                      //mandar SMS
+                                      sms.phone(_user.phone)
+                                      sms.mess('Hola, queriamos agradecerte por venir hoy a nuestro local ' + local.localName + ' ' + branch.branchName + '\nResponde a esta breve encuesta para participar por un premio\n' +  body )
+                                      sms.mandarSMS()
+                                    }
+                                  })
+                                }, 300000)
+
+                                //Generar short URL para la ruleta
+                                short.shorturl("http://45.32.162.159/ruleta/"+_user[0].phone+"/"+code.code, (err, body) => {
+                                  if (err) {
+                                    throw(err)
+                                  }
+                                  else {
+                                    //enviar SMS
+                                    sms.phone(_user[0].phone)
+                                    sms.mess( local.localName + ': Felicidades!!!, puedes jugar a la ruleta presionando este link: \n' + body)
+                                    sms.mandarSMS()
+                                    res.render('pointRoulette')
+                                  }
+                                })
+                              }
+                            })
+                          }
+                        })
                       }
                     })
-
                   }
                 })
               })
