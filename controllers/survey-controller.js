@@ -67,7 +67,7 @@ SurveyController.addForm = (req, res, next) => {
                           var jsonQuestion = []
                           for( var i=0; i< questionsRow.length; i++){
                             var item = {}
-                            item["question"+i] = questionsRow[i].question
+                            item["question"] = questionsRow[i].question
 
                             jsonQuestion.push(item)
                           }
