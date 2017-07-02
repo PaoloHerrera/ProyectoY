@@ -1,11 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="app">
   <head>
     <meta charset="utf-8">
     <title></title>
   </head>
   <body>
-    each val in questions
-      h1 val.question
+    each question in questions
+      if question.type == 'star'
+        div(ng-controller='StarController as star', class='container')
+          h1= question.question
+          div(star-rating, ng-model='star.rating', on-rating-select='star.rateFunction(star)')
+  
   </body>
 </html>
