@@ -1,6 +1,7 @@
 'use strict'
 
-var CodeModel = require('../models/prize-model'),
+var UserModel = require('../models/user-model'),
+    CodeModel = require('../models/prize-model'),
     SurveyModel = require('../models/survey-model'),
     QuestionModel = require('../models/question-model'),
     SurveyController = () => {}
