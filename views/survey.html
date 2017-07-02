@@ -20,7 +20,7 @@
           div(class='col-md-2')
           div(class='col-md-8')
             div(class='panel panel-default', ng-controller='StarController as star')
-              div(class='panel-heading') <h3> #{quest} </h3>
+              div(class='panel-heading text-center') <h3> #{quest} </h3>
               div(class='panel-body text-center')
                 div( star-rating, ng-model='star.rating', on-rating-select='star.rateFunction(star)')
         if question.type == 'rating'
