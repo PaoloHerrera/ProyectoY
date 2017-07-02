@@ -72,15 +72,10 @@ SurveyController.addForm = (req, res, next) => {
                             jsonQuestion.push(item)
                           }
 
-                          console.log(JSON.stringify(jsonQuestion))
-                          /*res.render('survey', {
-                            idSurvey : questionsRow[0].idSurvey,
-                            question1 : questionsRow[0].question,
-                            question2 : questionsRow[1].question,
-                            question3 : questionsRow[2].question,
-                            question4 : questionsRow[3].question
-
-                          })*/
+                          console.log(jsonQuestion)
+                          res.render('survey',[{
+                            idSurvey : questionsRow[0].idSurvey},
+                            jsonQuestion])
                         }
                       }
                     })
