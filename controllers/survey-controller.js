@@ -33,7 +33,7 @@ SurveyController.addForm = (req, res, next) => {
 
               /* Verifica si existe encuesta y si ha sido respondida */
               let querySurvey = {
-                Code_idCode = codeDB.idCode
+                Code_idCode: codeDB.idCode
               }
               //extrae la encuesta
               SurveyModel.getSurvey( querySurvey, (err, surveyRow) => {
@@ -48,7 +48,7 @@ SurveyController.addForm = (req, res, next) => {
                     //Guarda la encuesta en una variable
                     let survey = surveyRow[0],
                         queryQuestion = {
-                          idSurvey = survey.idSurvey
+                          idSurvey: survey.idSurvey
                         }
                     /* Extrae las preguntas de la encuesta */
                     QuestionModel.getQuestions(queryQuestion, (err, questionsRow) => {
