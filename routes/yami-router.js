@@ -26,7 +26,7 @@ router
 
       .post('/winprize', YamiController.addWinPrize)
 
-      //.get('/encuesta/:IdUser/:idCode', SurveyController.addForm)
+      .get('/encuesta/:phone/:code', SurveyController.addForm)
 
       .use(YamiController.error404)
 
