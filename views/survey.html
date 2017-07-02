@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title></title>
+    <link rel="stylesheet" href="../../css/survey.css">
   </head>
   <body>
     each question in questions
@@ -10,6 +11,8 @@
         div(ng-controller='StarController as star', class='container')
           h1= question.question
           div(star-rating, ng-model='star.rating', on-rating-select='star.rateFunction(star)')
-  
+
+  script(src='../../js/angular.min.js')
+  script(src='../../js/star-question.js')
   </body>
 </html>
