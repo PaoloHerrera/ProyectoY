@@ -8,8 +8,8 @@
   <body>
     each question in questions
       if question.type == 'star'
+        h1 question.question
         div(ng-controller='StarController as star', class='container')
-          h1 question.question
           div(star-rating, ng-model='star.rating', on-rating-select='star.rateFunction(star)')
 
   </body>
