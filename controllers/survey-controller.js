@@ -64,7 +64,7 @@ SurveyController.addForm = (req, res, next) => {
                           Además, se debe asignar el tipo de pregunta en la BDD y consultarla (ej:
                           estrella, box, checkbox, etc.) */
                           var jsonQuestion = []
-                          for( int i=0; i< questionsRow.length; i++){
+                          for( var i=0; i< questionsRow.length; i++){
                             item = {}
                             item["question"+i] = questionsRow[i].question
 
