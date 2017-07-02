@@ -19,7 +19,8 @@
           div(class='col-md-8')
             div(class='panel panel-default')
               div(ng-controller='StarController as star', class='container')
-                div(class='panel-heading') h2= question.question
+                div(class='panel-heading')
+                  h2= question.question
                 div(class='panel-body', star-rating, ng-model='star.rating', on-rating-select='star.rateFunction(star)')
         if question.type == 'rating'
 
