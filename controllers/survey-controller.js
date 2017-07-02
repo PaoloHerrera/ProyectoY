@@ -73,9 +73,9 @@ SurveyController.addForm = (req, res, next) => {
                           }
 
                           console.log(jsonQuestion)
-                          res.render('survey',[{
+                          res.render('survey',[{locals: {
                             idSurvey : questionsRow[0].idSurvey},
-                            jsonQuestion])
+                            jsonQuestion}])
                         }
                       }
                     })
