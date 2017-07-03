@@ -10,7 +10,7 @@
         alert('valid');
       }
 
-    }]);
+    }])
     .controller('StarController', RatingController)
     .directive('starRating', starRating);
 
