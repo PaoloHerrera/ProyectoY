@@ -44,7 +44,11 @@
                     label(class='btn btn-default')
                       input(type='radio', autocomplete='off')
                       | Muy Buena
-
+            if question.type == 'dropdown'
+              div(class='panel panel-default text-center')
+                div(class='panel-heading') <h4> #{quest} </h4>
+                div(class='panel-body text-center')
+                  
   script(src='../../js/angular.min.js')
   script(src='../../js/star-question.js')
   <link rel="stylesheet" type="text/css" href="http://www.shieldui.com/shared/components/latest/css/light-bootstrap/all.min.css" />
