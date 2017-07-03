@@ -32,19 +32,19 @@
                   div(class='panel-body text-center')
                     div(class='btn-group', data-toggle='buttons')
                       label(class='btn btn-default')
-                        input(type='radio', autocomplete='off', required)
+                        input(type='radio', autocomplete='off', ng-required='true')
                         | Muy Mala
                       label(class='btn btn-default')
-                        input(type='radio', autocomplete='off', required)
+                        input(type='radio', autocomplete='off', ng-required='true')
                         | Mala
                       label(class='btn btn-default')
-                        input(type='radio', autocomplete='off', required)
+                        input(type='radio', autocomplete='off', ng-required='true')
                         | Regular
                       label(class='btn btn-default')
-                        input(type='radio', autocomplete='off', required)
+                        input(type='radio', autocomplete='off', ng-required='true')
                         | Buena
                       label(class='btn btn-default')
-                        input(type='radio', autocomplete='off', required)
+                        input(type='radio', autocomplete='off', ng-required='true')
                         | Muy Buena
               if question.type == 'select'
                 div(class='panel panel-default text-center')
@@ -59,7 +59,7 @@
                 div(class='panel panel-default text-center')
                   div(class='panel-heading') <h4> #{quest} </h4>
                   div(class='panel-body text-center')
-                    textarea(class='form-control', rows='4')
+                    textarea(class='form-control', ng-required='true', rows='4')
 
             button(type='submit', class='btn btn-primary col-xs-offset-3 col-sm-offset-5', ng-disabled='Survey.$invalid') Enviar
 
