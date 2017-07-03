@@ -14,52 +14,53 @@
     div(class='container')
       div(class='page-header')
         h1 Local <small>por favor responde a esta encuesta</small>
-      div(class='container')
-        div(class='col-md-2')
-        div(class='col-md-8')
-          each question in questions
-            - var quest = question.question
-            if question.type == 'star'
-              div(class='panel panel-default', ng-controller='StarController as star')
-                div(class='panel-heading text-center') <h4> #{quest} </h4>
-                div(class='panel-body text-center')
-                  div( star-rating, ng-model='star.rating', on-rating-select='star.rateFunction(star)')
-            if question.type == 'rating'
-              div(class='panel panel-default text-center')
-                div(class='panel-heading') <h4> #{quest} </h4>
-                div(class='panel-body text-center')
-                  div(class='btn-group', data-toggle='buttons')
-                    label(class='btn btn-default')
-                      input(type='radio', autocomplete='off')
-                      | Muy Mala
-                    label(class='btn btn-default')
-                      input(type='radio', autocomplete='off')
-                      | Mala
-                    label(class='btn btn-default')
-                      input(type='radio', autocomplete='off')
-                      | Regular
-                    label(class='btn btn-default')
-                      input(type='radio', autocomplete='off')
-                      | Buena
-                    label(class='btn btn-default')
-                      input(type='radio', autocomplete='off')
-                      | Muy Buena
-            if question.type == 'dropdown'
-              div(class='panel panel-default text-center')
-                div(class='panel-heading') <h4> #{quest} </h4>
-                div(class='panel-body text-center')
-                  div(class='col-xs-6 col-sm-4 col-xs-offset-3 col-sm-offset-5')
-                    select(class='form-control')
-                      <option selected>Elige..</option>
-                      <option>Si</option>
-                      <option>No</option>
-            if question.type == 'text'
-              div(class='panel panel-default text-center')
-                div(class='panel-heading') <h4> #{quest} </h4>
-                div(class='panel-body text-center')
-                  textarea(class='form-control', rows='4')
+      form(class='form-group')
+        div(class='container')
+          div(class='col-md-2')
+          div(class='col-md-8')
+            each question in questions
+              - var quest = question.question
+              if question.type == 'star'
+                div(class='panel panel-default', ng-controller='StarController as star')
+                  div(class='panel-heading text-center') <h4> #{quest} </h4>
+                  div(class='panel-body text-center')
+                    div( star-rating, ng-model='star.rating', on-rating-select='star.rateFunction(star)')
+              if question.type == 'rating'
+                div(class='panel panel-default text-center')
+                  div(class='panel-heading') <h4> #{quest} </h4>
+                  div(class='panel-body text-center')
+                    div(class='btn-group', data-toggle='buttons')
+                      label(class='btn btn-default')
+                        input(type='radio', autocomplete='off')
+                        | Muy Mala
+                      label(class='btn btn-default')
+                        input(type='radio', autocomplete='off')
+                        | Mala
+                      label(class='btn btn-default')
+                        input(type='radio', autocomplete='off')
+                        | Regular
+                      label(class='btn btn-default')
+                        input(type='radio', autocomplete='off')
+                        | Buena
+                      label(class='btn btn-default')
+                        input(type='radio', autocomplete='off')
+                        | Muy Buena
+              if question.type == 'dropdown'
+                div(class='panel panel-default text-center')
+                  div(class='panel-heading') <h4> #{quest} </h4>
+                  div(class='panel-body text-center')
+                    div(class='col-xs-6 col-sm-4 col-xs-offset-3 col-sm-offset-5')
+                      select(class='form-control')
+                        <option selected>Elige..</option>
+                        <option>Si</option>
+                        <option>No</option>
+              if question.type == 'text'
+                div(class='panel panel-default text-center')
+                  div(class='panel-heading') <h4> #{quest} </h4>
+                  div(class='panel-body text-center')
+                    textarea(class='form-control', rows='4')
 
-        button(type='submit', class='btn btn-primary')
+        button(type='submit', class='btn btn-primary') Enviar
 
   script(src='../../js/angular.min.js')
   script(src='../../js/star-question.js')
