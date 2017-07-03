@@ -14,35 +14,36 @@
     div(class='container')
       div(class='page-header')
         h1 Local <small>por favor responde a esta encuesta</small>
-      each question in questions
-        - var quest = question.question
-        div(class='col-md-2')
-        div(class='col-md-8')
-          if question.type == 'star'
-            div(class='panel panel-default', ng-controller='StarController as star')
-              div(class='panel-heading text-center') <h4> #{quest} </h4>
-              div(class='panel-body text-center')
-                div( star-rating, ng-model='star.rating', on-rating-select='star.rateFunction(star)')
-          if question.type == 'rating'
-            div(class='panel panel-default text-center')
-              div(class='panel-heading text-center') <h4> #{quest} </h4>
-              div(class='panel-body text-center')
-                div(class='btn-group', data-toggle='buttons')
-                  label(class='btn btn-default')
-                    input(type='radio', autocomplete='off')
-                    | Muy Mala
-                  label(class='btn btn-default')
-                    input(type='radio', autocomplete='off')
-                    | Mala
-                  label(class='btn btn-default')
-                    input(type='radio', autocomplete='off')
-                    | Regular
-                  label(class='btn btn-default')
-                    input(type='radio', autocomplete='off')
-                    | Buena
-                  label(class='btn btn-default')
-                    input(type='radio', autocomplete='off')
-                    | Muy Buena
+      div(class='container')
+        each question in questions
+          - var quest = question.question
+          div(class='col-md-2')
+          div(class='col-md-8')
+            if question.type == 'star'
+              div(class='panel panel-default', ng-controller='StarController as star')
+                div(class='panel-heading text-center') <h4> #{quest} </h4>
+                div(class='panel-body text-center')
+                  div( star-rating, ng-model='star.rating', on-rating-select='star.rateFunction(star)')
+            if question.type == 'rating'
+              div(class='panel panel-default text-center')
+                div(class='panel-heading') <h4> #{quest} </h4>
+                div(class='panel-body text-center')
+                  div(class='btn-group', data-toggle='buttons')
+                    label(class='btn btn-default')
+                      input(type='radio', autocomplete='off')
+                      | Muy Mala
+                    label(class='btn btn-default')
+                      input(type='radio', autocomplete='off')
+                      | Mala
+                    label(class='btn btn-default')
+                      input(type='radio', autocomplete='off')
+                      | Regular
+                    label(class='btn btn-default')
+                      input(type='radio', autocomplete='off')
+                      | Buena
+                    label(class='btn btn-default')
+                      input(type='radio', autocomplete='off')
+                      | Muy Buena
 
   script(src='../../js/angular.min.js')
   script(src='../../js/star-question.js')
