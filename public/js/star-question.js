@@ -3,6 +3,14 @@
 
   angular
     .module('app', [])
+    .controller('SubmitSurveyController', ['$scope', function($scope) {
+      $scope.quality = null;
+
+      $scope.submitForm = function() {
+        alert('valid');
+      }
+
+    }]);
     .controller('StarController', RatingController)
     .directive('starRating', starRating);
 
