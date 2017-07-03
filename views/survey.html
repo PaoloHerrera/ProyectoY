@@ -31,20 +31,20 @@
                   div(class='panel-heading') <h4> #{quest} </h4>
                   div(class='panel-body text-center')
                     div(class='btn-group', data-toggle='buttons')
-                      label(class='btn btn-default', ng-model='quality', ng-required='!quality')
-                        input(type='radio', autocomplete='off')
+                      label(class='btn btn-default')
+                        input(type='radio', autocomplete='off', ng-model='quality', class='sr-only', ng-required='required')
                         | Muy Mala
-                      label(class='btn btn-default', ng-model='quality', ng-required='!quality')
-                        input(type='radio', autocomplete='off')
+                      label(class='btn btn-default')
+                        input(type='radio', autocomplete='off', ng-model='quality', class='sr-only', ng-required='required')
                         | Mala
-                      label(class='btn btn-default', ng-model='quality', ng-required='!quality')
-                        input(type='radio', autocomplete='off')
+                      label(class='btn btn-default')
+                        input(type='radio', autocomplete='off', ng-model='quality', class='sr-only', ng-required='required')
                         | Regular
-                      label(class='btn btn-default', ng-model='quality', ng-required='!quality')
-                        input(type='radio', autocomplete='off')
+                      label(class='btn btn-default')
+                        input(type='radio', autocomplete='off', ng-model='quality', class='sr-only', ng-required='required')
                         | Buena
-                      label(class='btn btn-default', ng-model='quality', ng-required='!quality')
-                        input(type='radio', autocomplete='off')
+                      label(class='btn btn-default')
+                        input(type='radio', autocomplete='off', ng-model='quality', class='sr-only', ng-required='required')
                         | Muy Buena
               if question.type == 'select'
                 div(class='panel panel-default text-center')
