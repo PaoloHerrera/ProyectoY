@@ -5,9 +5,10 @@
     <title>Encuesta</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../../css/survey.css">
   </head>
   <body>
@@ -20,14 +21,14 @@
           each question in questions
             - var quest = question.question
             if question.type == 'star'
-              div(class='panel panel-default', ng-controller='StarController as star')
-                div(class='panel-heading text-center') <h4> #{quest} </h4>
-                div(class='panel-body text-center')
+              div(class='card', ng-controller='StarController as star')
+                div(class='card-header text-center') <h4> #{quest} </h4>
+                div(class='card-block text-center')
                   div( star-rating, ng-model='star.rating', on-rating-select='star.rateFunction(star)')
             if question.type == 'rating'
-              div(class='panel panel-default text-center')
-                div(class='panel-heading') <h4> #{quest} </h4>
-                div(class='panel-body text-center')
+              div(class='card text-center')
+                div(class='card-header') <h4> #{quest} </h4>
+                div(class='card-block text-center')
                   div(class='btn-group', data-toggle='buttons')
                     label(class='btn btn-default')
                       input(type='radio', autocomplete='off')
@@ -45,9 +46,9 @@
                       input(type='radio', autocomplete='off')
                       | Muy Buena
             if question.type == 'dropdown'
-              div(class='panel panel-default text-center')
-                div(class='panel-heading') <h4> #{quest} </h4>
-                div(class='panel-body text-center')
+              div(class='card text-center')
+                div(class='card-header') <h4> #{quest} </h4>
+                div(class='card-block text-center')
                   select(class='custom-select mb-2 mr-sm-2 mb-sm-0', id='inlineFormCustomSelect')
                     <option selected>Elige..</option>
                     <option>Si</option>
