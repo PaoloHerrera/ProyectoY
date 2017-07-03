@@ -7,7 +7,7 @@
       $scope.quality = null;
 
       $scope.submitForm = function() {
-        alert('valid');
+        console.log('valid');
       }
 
     }])
