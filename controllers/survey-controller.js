@@ -127,11 +127,11 @@ SurveyController.addForm = (req, res, next) => {
 }
 
 SurveyController.success = (req, res, next) => {
-  var message = req.body.message
+  var message = req.params.message
 
   console.log(message)
 
-  res.status(200).sendFile('/root/ProyectoY/views/errorcitos.html')
+  res.render('errorcitos')
 }
 
 module.exports = SurveyController

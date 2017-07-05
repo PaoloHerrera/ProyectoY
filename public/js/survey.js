@@ -11,15 +11,14 @@
         //METODO
         var message = 'Hola Mundo :D'
         $http({
-          url: 'http://yamiapp.co/encuesta-respondida',
-          method: "POST",
+          url: 'http://yamiapp.co/encuesta-respondida/'x,
+          method: "GET",
           data: { 'message' : message }
         })
         .then(function(response) {
             // success
             console.log(response.data)
-
-            $window.location.href = 'http://yamiapp.co/errorcitos'
+            
         },
         function(response) { // optional
             // failed
