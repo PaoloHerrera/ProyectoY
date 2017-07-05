@@ -31,7 +31,7 @@
     .directive('starRating', starRating);
 
   function RatingController() {
-    this.rating = 1;
+    this.rating = 3;
     this.isReadonly = true;
     this.rateFunction = function(star) {
       console.log('Rating selected: ' + star);
