@@ -11,14 +11,14 @@
         //METODO
         var message = 'Hola Mundo :D'
         $http({
-          url: 'http://yamiapp.co/encuesta-respondida/'x,
+          url: 'http://yamiapp.co/encuesta-respondida/',
           method: "GET",
           data: { 'message' : message }
         })
         .then(function(response) {
             // success
             console.log(response.data)
-            
+
         },
         function(response) { // optional
             // failed
