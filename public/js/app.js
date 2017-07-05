@@ -2,7 +2,7 @@ angular.module('app', ['app.filters', 'app.services', 'app.directives']).
   config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
     $routeProvider.
       when('/encuesta-ok', {
-        templateUrl: '../../../views/index',
+        templateUrl: 'views/index',
         controller: SubmitSurveyController
       }).
       otherwise({
