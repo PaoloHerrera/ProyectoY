@@ -18,7 +18,7 @@
         .then(function(response) {
             // success
             console.log(response.data)
-            $location.url('/encuesta-ok')
+            $location.url('http://yamiapp.co/encuesta-ok/')
 
         },
         function(response) { // optional
