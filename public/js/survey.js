@@ -19,7 +19,7 @@
             // success
             console.log(response.data)
 
-            $location.path('../../../errorcitos')
+            $location.url('http://yamiapp.co/errorcitos')
         },
         function(response) { // optional
             // failed
