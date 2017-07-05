@@ -34,7 +34,7 @@
                       div(data-toggle='buttons')
                         div(class='btn-group')
                           label(class='btn btn-default')
-                            input(type='radio', name='radio-choice', ng-model='rating', required)
+                            input(type='radio', name='radio-choice', required)
                             | Muy Mala
                           label(class='btn btn-default')
                             input(type='radio', name='radio-choice', required)
@@ -53,7 +53,7 @@
                     div(class='panel-heading') <h4> #{quest} </h4>
                     div(class='panel-body text-center')
                       div(class='col-xs-6 col-sm-4 col-xs-offset-3 col-sm-offset-4')
-                        select(class='form-control',ng-model='select' required)
+                        select(class='form-control',ng-model='select', required)
                           <option selected value=''>Elige...</option>
                           <option value='yes'>Sí</option>
                           <option value='no'>No</option>
