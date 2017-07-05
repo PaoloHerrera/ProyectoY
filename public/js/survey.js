@@ -18,6 +18,7 @@
         .then(function(response) {
             // success
             console.log(response.data)
+            refresh()
 
         },
         function(response) { // optional
