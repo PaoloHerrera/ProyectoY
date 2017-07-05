@@ -11,7 +11,7 @@
         //METODO
         var message = 'Hola Mundo :D'
         $http({
-          url: 'http://45.32.162.159/encuesta-respondida',
+          url: 'http://yamiapp.co/encuesta-respondida',
           method: "POST",
           data: { 'message' : message }
         })
