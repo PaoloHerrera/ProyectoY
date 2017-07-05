@@ -126,5 +126,10 @@ SurveyController.addForm = (req, res, next) => {
 
 }
 
+SurveyController.success = (req, res, next) => {
+  var message = req.body.message
+
+  console.log(message)
+}
 
 module.exports = SurveyController

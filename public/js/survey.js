@@ -7,6 +7,21 @@
 
       $scope.submitForm = function() {
         console.log('valid');
+
+        //METODO
+        $http({
+          url: 'http://45.32.162.159/encuesta-respondida',
+          method: "POST",
+          data: { 'message' : message }
+        })
+        .then(function(response) {
+            // success
+            console.log("sí :)")
+        },
+        function(response) { // optional
+            // failed
+            console.log("no :(")
+        });
       }
 
     }])

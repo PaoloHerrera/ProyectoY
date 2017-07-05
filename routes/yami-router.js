@@ -28,6 +28,8 @@ router
 
       .get('/encuesta/:phone/:code', SurveyController.addForm)
 
+      .post('/encuesta-respondida', SurveyController.success)
+
       .use(YamiController.error404)
 
 module.exports = router
