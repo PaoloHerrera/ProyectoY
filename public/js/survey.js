@@ -18,7 +18,7 @@
         .then(function(response) {
             // success
             console.log(response.data)
-            $location.path(response)
+            $location.url('/')
 
         },
         function(response) { // optional
