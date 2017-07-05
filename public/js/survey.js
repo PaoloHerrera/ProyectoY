@@ -19,7 +19,7 @@
             // success
             console.log(response.data)
 
-            
+            $scope.message(response.data)
         },
         function(response) { // optional
             // failed
