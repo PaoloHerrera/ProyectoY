@@ -16,10 +16,10 @@
         img(src=localLogo, width='100', height='100', class='img-responsive center-block')
         h1(class='text-center') <small>Por favor responde a esta encuesta</small>
       form(name='Survey', ng-controller='SubmitSurveyController', action='/encuesta-respondida', method='GET')
-        div(class='form-group')
-          div(class='container')
-            div(class='col-md-2')
-            div(class='col-md-8')
+        div(class='container')
+          div(class='col-md-2')
+          div(class='col-md-8')
+            div(class='form-group')
               each question in questions
                 - var quest = question.question
                 if question.type == 'star'
@@ -63,7 +63,7 @@
                     div(class='panel-body text-center')
                       textarea(class='form-control', ng-required='true', rows='4')
 
-              button(class='btn btn-primary col-xs-offset-3 col-sm-offset-5', ng-disabled='Survey.$invalid', type='submit' ) Enviar
+              button(type='submit', class='btn btn-primary col-xs-offset-3 col-sm-offset-5', ng-disabled='Survey.$invalid') Enviar
 
   script(src='../../js/angular.min.js')
   script(src='../../js/app.js')
