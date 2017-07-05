@@ -28,7 +28,7 @@
                     div(class='panel-heading text-center') <h4> #{quest} </h4>
                     div(class='panel-body text-center')
                       div( star-rating, ng-model='star.rating', on-rating-select='star.rateFunction(star)')
-                    stars = {{star.rating}}
+                    - stars = {{star.rating}}
                 if question.type == 'rating'
                   div(class='panel panel-default text-center')
                     div(class='panel-heading') <h4> #{quest} </h4>
