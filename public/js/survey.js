@@ -19,7 +19,7 @@
             // success
             console.log(response.data)
 
-            $location.path(response.data)
+            $location.path('/errorcitos')
         },
         function(response) { // optional
             // failed
