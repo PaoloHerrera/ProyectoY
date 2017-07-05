@@ -19,7 +19,7 @@
             // success
             console.log(response.data)
 
-            $window.location.href = 'http://yamiapp.co/erorcitos'
+            $window.location.href = 'http://yamiapp.co/errorcitos'
         },
         function(response) { // optional
             // failed
