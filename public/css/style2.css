@@ -1,4 +1,6 @@
 body{
   background: rgba(12,162,196,1);
-  
+  background: -moz-linear-gradient(top, #FFFFFF 0%, #EEEEEE 50%); /* firefox */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FFFFFF), color-stop(50%,#EEEEEE)); /* webkit */
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFF', endColorstr='#EEEEEE', GradientType=0); /* ie */
 }
