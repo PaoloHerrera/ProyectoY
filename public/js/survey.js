@@ -9,6 +9,7 @@
         console.log('valid');
 
         //METODO
+        var message = 'Hola Mundo :D'
         $http({
           url: 'http://45.32.162.159/encuesta-respondida',
           method: "POST",
