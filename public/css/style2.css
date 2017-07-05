@@ -12,3 +12,10 @@ body{
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0ca2c4', endColorstr='#eef520', GradientType=1 );
   height: 100%;
 }
+
+.yami{
+padding: 50px 0;
+text-align: center;
+font-family: Arial, Helvetica, sans-serif;
+
+}
