@@ -131,7 +131,7 @@ SurveyController.success = (req, res, next) => {
 
   console.log(message)
 
-  res.status(200).send('Hola soy bofito')
+  res.status(200).sendFile(__dirname+'/error.html')
 }
 
 module.exports = SurveyController

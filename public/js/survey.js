@@ -3,7 +3,7 @@
 
   angular
     .module('app', [])
-    .controller('SubmitSurveyController', ['$scope','$http', function($scope,$http) {
+    .controller('SubmitSurveyController', ['$scope','$http','$location' function($scope,$http,$location) {
 
       $scope.submitForm = function() {
         console.log('valid');
@@ -19,7 +19,7 @@
             // success
             console.log(response.data)
 
-            $scope.message(response.data)
+            $location.path(response.data)
         },
         function(response) { // optional
             // failed
