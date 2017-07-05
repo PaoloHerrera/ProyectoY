@@ -18,7 +18,7 @@
         .then(function(response) {
             // success
             console.log(response.data)
-            $location.path(response.data)
+            $location.path(response)
 
         },
         function(response) { // optional
