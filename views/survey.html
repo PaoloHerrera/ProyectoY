@@ -34,26 +34,26 @@
                       div(data-toggle='buttons')
                         div(class='btn-group')
                           label(class='btn btn-default')
-                            input(type='radio', name='radio-choice', required)
+                            input(type='radio', name='radio-choice', ng-model='rating', required)
                             | Muy Mala
                           label(class='btn btn-default')
-                            input(type='radio', name='radio-choice', required)
+                            input(type='radio', name='radio-choice', ng-model='rating', required)
                             | Mala
                           label(class='btn btn-default')
-                            input(type='radio', name='radio-choice', required)
+                            input(type='radio', name='radio-choice', ng-model='rating', required)
                             | Regular
                           label(class='btn btn-default')
-                            input(type='radio', name='radio-choice', required)
+                            input(type='radio', name='radio-choice', ng-model='rating', required)
                             | Buena
                           label(class='btn btn-default')
-                            input(type='radio', name='radio-choice', required)
+                            input(type='radio', name='radio-choice', ng-model='rating', required)
                             | Muy Buena
                 if question.type == 'select'
                   div(class='panel panel-default text-center')
                     div(class='panel-heading') <h4> #{quest} </h4>
                     div(class='panel-body text-center')
                       div(class='col-xs-6 col-sm-4 col-xs-offset-3 col-sm-offset-4')
-                        select(class='form-control', required)
+                        select(class='form-control',ng-model='select' required)
                           <option selected value=''>Elige...</option>
                           <option value='yes'>Sí</option>
                           <option value='no'>No</option>
@@ -61,7 +61,7 @@
                   div(class='panel panel-default text-center')
                     div(class='panel-heading') <h4> #{quest} </h4>
                     div(class='panel-body text-center')
-                      textarea(class='form-control', ng-required='true', rows='4')
+                      textarea(class='form-control', ng-model='text', ng-required='true', rows='4')
 
               button(type='submit', class='btn btn-primary col-xs-offset-3 col-sm-offset-5', ng-disabled='Survey.$invalid') Enviar
 
