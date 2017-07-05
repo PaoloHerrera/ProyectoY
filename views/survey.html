@@ -63,7 +63,7 @@
                     div(class='panel-body text-center')
                       textarea(class='form-control', ng-model='text', ng-required='true', rows='4')
 
-              button(type='submit', class='btn btn-primary col-xs-offset-3 col-sm-offset-5') Enviar
+              button(type='submit', class='btn btn-primary col-xs-offset-3 col-sm-offset-5', ng-disabled='Survey.$invalid') Enviar
 
   script(src='../../js/angular.min.js')
   script(src='../../js/app.js')
