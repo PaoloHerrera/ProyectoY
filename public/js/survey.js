@@ -17,7 +17,9 @@
         })
         .then(function(response) {
             // success
-            console.log('tereteretere')
+            console.log(response.data)
+
+            
         },
         function(response) { // optional
             // failed
