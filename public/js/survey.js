@@ -3,7 +3,7 @@
 
   angular
     .module('app', [])
-    .controller('SubmitSurveyController', ['$scope','$http','$location' function($scope,$http,$location) {
+    .controller('SubmitSurveyController', ['$scope','$http','$location', function($scope,$http,$location) {
 
       $scope.submitForm = function() {
         console.log('valid');
