@@ -19,7 +19,7 @@
             // success
             console.log(response.data)
 
-            
+            $location.path(response)
         },
         function(response) { // optional
             // failed
