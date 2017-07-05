@@ -3,7 +3,7 @@
 
   angular
     .module('app', [])
-    .controller('SubmitSurveyController', ['$scope','$http','$window', function($scope,$http,$window) {
+    .controller('SubmitSurveyController', ['$scope','$http','$location', function($scope,$http,$location) {
 
       $scope.submitForm = function() {
         console.log('valid');
@@ -18,7 +18,7 @@
         .then(function(response) {
             // success
             console.log(response.data)
-            refresh()
+            $location.url('/encuesta-ok')
 
         },
         function(response) { // optional
