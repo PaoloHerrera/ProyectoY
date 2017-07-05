@@ -131,7 +131,7 @@ SurveyController.success = (req, res, next) => {
 
   console.log(message)
 
-  res.render('errorcitos')
+  res.sendFile('/root/ProyectoY/views/errorcitos.html')
 }
 
 module.exports = SurveyController

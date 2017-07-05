@@ -18,7 +18,7 @@
         .then(function(response) {
             // success
             console.log(response.data)
-            $location.absUrl('http://yamiapp.co/encuesta-ok')
+            $location.path(response.data)
 
         },
         function(response) { // optional
