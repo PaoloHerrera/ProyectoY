@@ -3,7 +3,7 @@
 
   angular
     .module('app', [])
-    .controller('SubmitSurveyController', ['$scope','$http','$location', function($scope,$http,$location) {
+    .controller('SubmitSurveyController', ['$scope','$http','$window', function($scope,$http,$window) {
 
       $scope.submitForm = function() {
         console.log('valid');
@@ -19,7 +19,7 @@
             // success
             console.log(response.data)
 
-            $location.path(response)
+            $window.location.href = 'http://yamiapp.co/erorcitos'
         },
         function(response) { // optional
             // failed
