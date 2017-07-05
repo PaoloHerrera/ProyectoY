@@ -17,11 +17,9 @@
         })
         .then(function(response) {
             // success
-            console.log("sí :)")
         },
         function(response) { // optional
             // failed
-            console.log("no :(")
         });
       }
 

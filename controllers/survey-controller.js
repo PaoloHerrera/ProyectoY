@@ -130,6 +130,8 @@ SurveyController.success = (req, res, next) => {
   var message = req.body.message
 
   console.log(message)
+
+  res.send('Hola soy bofito')
 }
 
 module.exports = SurveyController
