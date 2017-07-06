@@ -101,6 +101,7 @@ SurveyController.addForm = (req, res, next) => {
                                       console.log(jsonQuestion)
                                       res.render('survey',{
                                         idSurvey : questionsRow[0].idSurvey,
+                                        localId : local.idLocal,
                                         localName : local.localName,
                                         localLogo: local.localLogo,
                                         questions: jsonQuestion})
@@ -128,7 +129,18 @@ SurveyController.addForm = (req, res, next) => {
 
 SurveyController.success = (req, res, next) => {
 
-  res.render('surveySuccess')
+  let idLocal = req.params.idlocal
+
+  LocalModel.getLocal(idLocal, (err, localRow) => {
+    if(err){
+      throw(err)
+    }
+    else {
+      let local = localRow[0]
+
+      res.render('surveySuccess', {localLogo: local.localLogo, localName: local.localName})
+    }
+  })
 }
 
 module.exports = SurveyController

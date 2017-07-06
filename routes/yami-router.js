@@ -28,7 +28,7 @@ router
 
       .get('/encuesta/:phone/:code', SurveyController.addForm)
 
-      .get('/encuesta-respondida', SurveyController.success)
+      .get('/encuesta-respondida/:idlocal', SurveyController.success)
 
       .use(YamiController.error404)
 
