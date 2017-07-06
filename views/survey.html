@@ -23,14 +23,15 @@
               each question in questions
                 - var quest = question.question
                 if question.type == 'star'
-                  div(class='panel panel-default', ng-controller='StarController as star')
-                    div(class='panel-heading text-center') <h4> #{quest} </h4>
-                    div(class='panel-body text-center')
+                  div(class='', ng-controller='StarController as star')
+                    div(class='text-center') <h4> #{quest} </h4>
+                    div(class='text-center')
                       div( star-rating, ng-model='star.rating', on-rating-select='star.rateFunction(star)')
                 if question.type == 'rating'
-                  div(class='panel panel-default text-center')
-                    div(class='panel-heading') <h4> #{quest} </h4>
-                    div(class='panel-body text-center')
+                  div(class='')
+                  <hr/>
+                    div(class='text-center') <h4> #{quest} </h4>
+                    div(class='text-center')
                       div(data-toggle='buttons')
                         div(class='btn-group')
                           label(class='btn btn-default')
