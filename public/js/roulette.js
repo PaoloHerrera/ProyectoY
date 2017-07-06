@@ -123,7 +123,8 @@
 			});
 			p.$rouletteTarget = $('<div>').css({
 				'position' : 'relative',
-				'top' : '0'
+				'top' : '0',
+				'height' : '100%'
 			}).attr('class',"roulette-inner");
 			$roulette.append(p.$rouletteTarget);
 			p.$rouletteTarget.append(p.$images);
