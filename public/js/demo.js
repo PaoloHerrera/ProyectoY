@@ -40,6 +40,7 @@ $(function(){
 					idPrize: idPrize,
 					prizeName: prizename,
 					localName: localName,
+					localLogo : localLogo,
 					branchName: branchName
 				},
 				function(data, status){

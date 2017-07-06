@@ -40,7 +40,7 @@ YamiController.addWinPrize = (req, res, next) => {
         }
         else {
           //Generar short URL
-          short.shorturl("http://45.32.162.159/premio/"+data.idUser+"/"+data.idPrize, (err, body) => {
+          short.shorturl("http://yamiapp.co/premio/"+data.idUser+"/"+data.idPrize, (err, body) => {
             if (err) {
               throw(err)
             }
@@ -96,7 +96,7 @@ YamiController.addPrize = (req, res, next) => {
                   else {
                     let local = localRow[0]
 
-                    res.render('congratulations', { idUser: idUser, idPrize: prize.idPrize, prizeName : detail.prizeName, prizeImage : detail.prizeImage, branchName : branch.branchName, localName : local.localName})
+                    res.render('congratulations', { idUser: idUser, idPrize: prize.idPrize, prizeName : detail.prizeName, prizeImage : detail.prizeImage, branchName : branch.branchName, localName : local.localName, localLogo: local.localLogo})
                   }
                 })
               }
@@ -295,6 +295,7 @@ YamiController.addRoulette = (req, res, next) => {
                                           userPhone : row[0].phone,
                                           code : code,
                                           localName : local.data[0].localName,
+                                          localLogo : local.data[0].localLogo,
                                           branchName : branch.data[0].branchName,
                                           prizeId : prizeFocus.idPrize,
                                           prizeName : detailrow[0].prizeName,
