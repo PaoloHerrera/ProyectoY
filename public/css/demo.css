@@ -25,12 +25,12 @@ div.roulette-inner {
 }
 
 
-div.roulette {
+div.machine {
+	background-image:url('../img/TragaMonedasChico.png');
 }
 
 div.roulette_container {
 	background-color:rgb(253, 252, 253);
-	background-image:url('../img/TragaMonedasChico.png');
 	width:200px;
 	height:200px;
 	border:1px solid rgba(253, 252, 253, 0.31);
