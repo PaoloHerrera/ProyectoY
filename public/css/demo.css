@@ -32,8 +32,7 @@ div.machine {
 	background-position: center;
 	background-repeat: no-repeat;
 	text-align: center;
-	width: 40%;
-	height: 40%;
+	background-size:contain;
 }
 
 div.roulette_container {
