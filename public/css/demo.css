@@ -32,6 +32,8 @@ div.machine {
 	background-position: center;
 	background-repeat: no-repeat;
 	text-align: center;
+	width: auto;
+	height: auto;
 }
 
 div.roulette_container {
