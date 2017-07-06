@@ -5,6 +5,7 @@
       <title> #{localName} - Felicidades</title>
       <meta name="viewport" content-type="application/javascript" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
       <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
+      <link rel="stylesheet" type="text/css" href="../../css/prize.css"
     </head>
     <body>
       <form action="/confirmarPremio/#{prizeName}/#{idPrize}/#{idUser}/#{localName}/#{branchName}" method="GET" onsubmit="return confirm('Importante! Muestra esta pantalla al garzón/cajero');">
@@ -13,7 +14,7 @@
             <br>
             <br>
             <img src="#{localLogo}" alt="Logo local" class="img-responsive center-block" height="100" width="100"><br><br><br><br>
-            <img src="#{prizeImage}" class="img-rounded" width="300" height="185" alt="Premio"><br><br>
+            <img src="#{prizeImage}" class="img-prize" alt="Premio"><br><br>
             <h3> Felicidades te has ganado #{prizeName} En #{localName} #{branchName}</h3><br><br>
             <button class="btn btn-primary btn-lg" type="submit">Confirmar</button>
           </div>
