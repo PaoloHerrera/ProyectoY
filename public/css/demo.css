@@ -30,6 +30,7 @@ div.roulette-inner {
 div.machine {
 	padding: 100px 0px;
 	background-image:url('../img/TragaMonedasGrande.png');
+	background-position: center; 
 	background-size: 300px 480px;
 	background-repeat: no-repeat;
 	text-align: center;
