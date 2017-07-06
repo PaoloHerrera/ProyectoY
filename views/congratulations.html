@@ -10,7 +10,9 @@
       <form action="/confirmarPremio/#{prizeName}/#{idPrize}/#{idUser}/#{localName}/#{branchName}" method="GET" onsubmit="return confirm('Importante! Muestra esta pantalla al garzón/cajero');">
         <div class="yami">
           <div class="form-group">
-            <img src="#{localLogo}" alt="Logo local" class="img-responsive center-block" height="100" width="100" margin="20 0 20"><br><br><br><br>
+            <br>
+            <br>
+            <img src="#{localLogo}" alt="Logo local" class="img-responsive center-block" height="100" width="100"><br><br><br><br>
             <img src="#{prizeImage}" class="img-rounded" width="300" height="185" alt="Premio"><br><br>
             <h3> Felicidades te has ganado #{prizeName} En #{localName} #{branchName}</h3><br><br>
             <button class="btn btn-primary btn-lg" type="submit">Confirmar</button>
