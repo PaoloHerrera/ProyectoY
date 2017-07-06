@@ -15,8 +15,9 @@ body {
 	background-attachment: fixed;
 	height: 100%;
 }
-.yami{
+div.yami{
 	/*padding: 50px 0px;*/;
+	height: 100%;
 	text-align: center;
 }
 div.roulette {
