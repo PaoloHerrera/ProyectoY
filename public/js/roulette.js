@@ -105,7 +105,7 @@
 				p.imageCount = p.$images.length;
 				p.$images.eq(0).bind('load',function(){
 					p.imageHeight = $(this).height();
-					$roulette.css({ 'height' : ('71%') });
+					$roulette.css({ 'height' : ('77%') });
 					p.totalHeight = p.imageCount * p.imageHeight;
 					p.runUpDistance = 2 * p.imageHeight;
 				}).each(function(){
