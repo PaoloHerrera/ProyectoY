@@ -17,6 +17,7 @@ body {
 }
 .yami{
 	/*padding: 50px 0px;*/
+	height:100vh;
 	text-align: center;
 }
 div.roulette {
