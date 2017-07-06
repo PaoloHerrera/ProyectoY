@@ -62,8 +62,8 @@
                     div(class='panel-heading') <h4> #{quest} </h4>
                     div(class='panel-body text-center')
                       textarea(class='form-control', ng-required='true', rows='4')
-
-              button(type='submit', class='btn btn-primary col-xs-offset-3 col-sm-offset-5', ng-disabled='Survey.$invalid') Enviar
+              div(class='yami')
+                button(type='submit', class='btn btn-success', ng-disabled='Survey.$invalid') Enviar
   script(src='../../js/angular.min.js')
   script(src='../../js/app.js')
   script(src='../../js/survey.js')
