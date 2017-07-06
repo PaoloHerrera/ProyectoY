@@ -198,7 +198,27 @@ YamiController.prizeSuccess = (req, res, next) => {
               throw(err)
             }
             else {
-              res.render('prizeSuccess', {prizeImage: detailRow[0].prizeImage})
+              //extrae la sucursal
+              BranchModel.getBranch(prize.Branch_idBranch, (err, branchRow) => {
+                if(err){
+                  throw(err)
+                }
+                else {
+                  let branch = branchRow[0]
+
+                  //extrae el local
+                  LocalModel.getLocal(branch.idLocal, (err, localRow) => {
+                    if (err) {
+                      throw(err)
+                    }
+                    else {
+                      let local = localRow[0]
+
+                      res.render('prizeSuccess', {prizeImage: detailRow[0].prizeImage, localName: local.localName, localLogo: local.localLogo})
+                    }
+                  })
+                }
+              })
             }
           })
         }

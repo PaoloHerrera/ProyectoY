@@ -2,19 +2,21 @@
   <html ng-app="app">
     <head>
       <meta charset="utf-8">
-      <title>Yami - Felicidades</title>
+      <title>#{localName} - Gracias por jugar</title>
       <meta name="viewport" content-type="application/javascript" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
       <link rel="stylesheet" type="text/css" href="../../../../../css/bootstrap.min.css">
-      <link rel="stylesheet" text="text/css" href="../../../../../css/style.css">
+      <link rel="stylesheet" text="text/css" href="../../../../../css/prize.css">
     </head>
     <body>
       <form action="/" method="GET">
         <div class="yami">
           <div class="form-group">
-            <img src="../../../../../img/9990421.png" alt="Logo Yami" ><br><br><br><br>
-            <img src="#{prizeImage}" class="img-rounded" width="300" height="185" alt="Premio"><br><br>
-            <font color="white"><h3> <strong> Premio canjeado correctamente!</strong></h3></font><br><br>
-            <button class="btn btn-primary btn-lg" type="submit">Listo</button>
+            <br>
+            <img src="#{localLogo}" alt="Logo local" class="img-responsive center-block" height="100" width="100">
+            <img src="#{prizeImage}" class="img-responsive" height="200" width="700" alt="Premio">
+            <h3> <strong> Premio canjeado correctamente!</strong></h3>
+            <button class="btn btn-success btn-lg" type="submit">Listo</button><br><br>
+            <img src="../../../../../img/Powered-By-Yami.png" alt="Powered By Yami" class="img-resposive center-block" height="40" width="80">
           </div>
         </div>
 
