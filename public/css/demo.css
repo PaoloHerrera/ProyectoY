@@ -37,8 +37,8 @@ div.machine {
 
 div.roulette_container {
 	background-color:rgb(253, 252, 253);
-	width:180px;
-	height:180px;
+	width:170px;
+	height:200px;
 
 	border:1px solid rgba(253, 252, 253, 0.31);
 	box-shadow:0px 0px 3px lightpink;margin:auto;
