@@ -1,5 +1,6 @@
-img-prize {
-  width: 100%;
-  max-width: 100%;
-  height: auto;
+input[type=button], input[type=submit], input[type=reset] {
+
+      padding: 16px 32px;
+      margin: 4px 2px;
+      cursor: pointer;
 }
