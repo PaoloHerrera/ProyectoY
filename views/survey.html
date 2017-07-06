@@ -15,7 +15,7 @@
       div(class='page-header')
         img(src=localLogo, width='100', height='100', class='img-responsive center-block')
         h1(class='text-center') <small>Por favor responde a esta encuesta</small>
-      form(name='Survey', ng-controller='SubmitSurveyController', action='/encuesta-respondida/#{localId}', method='POST')
+      <form name='Survey', ng-controller='SubmitSurveyController', action='/encuesta-respondida/#{localId}', method='POST')>
         div(class='container')
           div(class='col-md-2')
           div(class='col-md-8')
@@ -68,6 +68,9 @@
                 <br>
                 <br>
                 img(src='../../img/Powered-By-Yami.png', class='img-resposive center-block', height='40', width='80')
+
+
+      </form>
   script(src='../../js/angular.min.js')
   script(src='../../js/app.js')
   script(src='../../js/survey.js')
