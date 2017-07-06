@@ -121,7 +121,7 @@ CodeController.getCode = (req, res, next) => {
                                 //Generar time Out de la encuesta
                                 setTimeout(() => {
                                   //Generar short URL para la encuesta
-                                  short.shorturl("http://45.32.162.159/encuesta/"+_user[0].phone+"/"+code.code, (err, body) => {
+                                  short.shorturl("http://yamiapp.co/encuesta/"+_user[0].phone+"/"+code.code, (err, body) => {
                                     if (err) {
                                       throw(err)
                                     }
@@ -135,7 +135,7 @@ CodeController.getCode = (req, res, next) => {
                                 }, 300000)
 
                                 //Generar short URL para la ruleta
-                                short.shorturl("http://45.32.162.159/ruleta/"+_user[0].phone+"/"+code.code, (err, body) => {
+                                short.shorturl("http://yamiapp.co/ruleta/"+_user[0].phone+"/"+code.code, (err, body) => {
                                   if (err) {
                                     throw(err)
                                   }
