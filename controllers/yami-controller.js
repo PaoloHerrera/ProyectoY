@@ -145,7 +145,7 @@ YamiController.prizeConfirm = (req, res, next) => {
                 let branch = branchRow[0]
 
                 //extrae el local
-                LocalModel.getLocal(branch.idLocal, (err, localRow){
+                LocalModel.getLocal(branch.idLocal, (err, localRow) => {
                   if (err) {
                     throw(err)
                   }
