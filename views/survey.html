@@ -60,9 +60,10 @@
                           <option value='yes'>Sí</option>
                           <option value='no'>No</option>
                 if question.type == 'text'
-                  div(class='panel panel-default text-center')
-                    div(class='panel-heading') <h4> #{quest} </h4>
-                    div(class='panel-body text-center')
+                  div(class='')
+                  <hr/>
+                    div(class='text-center) <h4> #{quest} </h4>
+                    div(class='text-center')
                       textarea(class='form-control', ng-required='true', rows='4')
               div(class='yami')
                 button(type='submit', class='btn btn-success', ng-disabled='Survey.$invalid') Enviar
