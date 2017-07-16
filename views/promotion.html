@@ -31,15 +31,15 @@
 
             <script type="text/javascript">
             function clock(){
-               	var time = new Date(),
-                    hour = time.getHours(),
-               	    minutes = time.getMinutes(),
-                   	seconds = time.getSeconds(),
-                   	timeOut = hour + " : " + minutes + " : " + seconds
+              var time = new Date();
+              var hour = time.getHours();
+              var minutes = time.getMinutes();
+              var seconds = time.getSeconds();
+              var timeOut = hour + " : " + minutes + " : " + seconds;
 
-               	document.getElementById("counter").InnerHTML = timeOut
+              document.getElementById("counter").InnerHTML = timeOut;
 
-               	setTimeout("clock()",1000)
+              setTimeout("clock()",1000);
             }
             </script>
 
