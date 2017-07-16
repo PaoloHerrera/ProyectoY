@@ -247,23 +247,6 @@ CodeController.getCode = (req, res, next) => {
                                         })
                                       }, 180000)
 
-
-                                      //Generar time Out de la primera promoción
-                                      setTimeout(() => {
-                                        //Generar short URL para la promoción
-                                        short.shorturl("http://yamiapp.co/promocion/"+_user[0].phone+"/"+code.code, (err, body) => {
-                                          if (err) {
-                                            throw(err)
-                                          }
-                                          else {
-                                            //mandar SMS
-                                            sms.phone(_user[0].phone)
-                                            sms.mess(local.localName+': Hace tiempo que no vienes a nuestros locales y tenemos una promocion para ti. Para enterarte accede a este link:\n' +  body )
-                                            sms.mandarSMS()
-                                          }
-                                        })
-                                      }, 360000)
-
                                     }
                                   }
                                 })
