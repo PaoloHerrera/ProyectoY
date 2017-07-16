@@ -5,6 +5,7 @@ var CodeModel = require('../models/code-model'),
     BookModel = require('../models/book-model'),
     BranchModel = require('../models/branch-model'),
     LocalModel = require('../models/local-model'),
+    PromotionModel = require('../models/promotion-model'),
     short = require('./shortURL'),
     sms = require('./sendsms'),
     CodeController = () => { }
@@ -72,6 +73,7 @@ CodeController.getCode = (req, res, next) => {
             else
             {
               let code = {
+                idCode: row[0].idCode,
                 code : req.body.code
               }
               //invoca al modelo de obtener usuario
@@ -84,7 +86,8 @@ CodeController.getCode = (req, res, next) => {
                   console.log(_user)
                 }
                 let actCode ={
-                  idUser : _user[0].idUser
+                  idUser : _user[0].idUser,
+                  codeDate: new Date()
                 }
                 //asigna el código al usuario
                 CodeModel.updateCode(actCode, code.code, (err) => {
@@ -133,6 +136,134 @@ CodeController.getCode = (req, res, next) => {
                                     }
                                   })
                                 }, 300000)
+                              /* Promociones */
+                                //Se consultan si hay promociones
+                                let codeQuery = {
+                                  idCode: code.idCode
+                                }
+                                PromotionModel.getPromotion(codeQuery, (err, promotions) => {
+                                  if(err){
+                                    throw(err)
+                                  }
+                                  else {
+                                    //Si hay promociones para el código
+                                    if(promotions.length != 0){
+
+                                      let promotion1 = promotions[0],
+                                          promotion2 = promotions[1],
+                                          promotion3 = promotions[2]
+
+                                      //** Ahora manda las promociones para cada código en un tiempo determinado. **Ver esto después, cuando se tire a producción
+                                      //Generar time Out de la primera promoción
+                                      setTimeout(() => {
+                                        //Generar short URL para la promoción
+                                        short.shorturl("http://yamiapp.co/promocion/"+_user[0].phone+"/"+code.code+"/"+promotion1.idPromotion, (err, body) => {
+                                          if (err) {
+                                            throw(err)
+                                          }
+                                          else {
+                                            let thetime = new Date(),
+                                                actPromotion = {
+                                                  activePromotion: 1,
+                                                  timeStart: thetime,
+                                                  timeFinish: thetime.setMinutes(200),
+                                                  sendedPromotion: 1
+                                                }
+                                            PromotionModel.updatePromotion(actPromotion, promotion1.idPromotion, (err){
+                                              if(err) {
+                                                throw(err)
+                                              }
+                                              else{
+                                                //mandar SMS
+                                                sms.phone(_user[0].phone)
+                                                sms.mess(local.localName+': Hace tiempo que no vienes a nuestro local y tenemos una promocion para ti. Para enterarte accede a este link:\n' +  body )
+                                                sms.mandarSMS()
+                                              }
+                                            })
+                                          }
+                                        })
+                                      }, 360000)
+
+                                      //Generar time Out de la segunda promoción
+                                      setTimeout(() => {
+                                        //Generar short URL para la promoción
+                                        short.shorturl("http://yamiapp.co/promocion/"+_user[0].phone+"/"+code.code+"/"+promotion2.idPromotion, (err, body) => {
+                                          if (err) {
+                                            throw(err)
+                                          }
+                                          else {
+                                            let thetime = new Date(),
+                                                actPromotion = {
+                                                  activePromotion: 1,
+                                                  timeStart: thetime,
+                                                  timeFinish: thetime.setMinutes(200),
+                                                  sendedPromotion: 1
+                                                }
+                                            PromotionModel.updatePromotion(actPromotion, promotion2.idPromotion, (err){
+                                              if(err) {
+                                                throw(err)
+                                              }
+                                              else{
+                                                //mandar SMS
+                                                sms.phone(_user[0].phone)
+                                                sms.mess(local.localName+': Hace tiempo que no vienes a nuestro local y tenemos una promocion para ti. Para enterarte accede a este link:\n' +  body )
+                                                sms.mandarSMS()
+                                              }
+                                            })
+                                          }
+                                        })
+                                      }, 400000)
+
+                                      //Generar time Out de la tercera promoción
+                                      setTimeout(() => {
+                                        //Generar short URL para la promoción
+                                        short.shorturl("http://yamiapp.co/promocion/"+_user[0].phone+"/"+code.code+"/"+promotion3.idPromotion, (err, body) => {
+                                          if (err) {
+                                            throw(err)
+                                          }
+                                          else {
+                                            let thetime = new Date(),
+                                                actPromotion = {
+                                                  activePromotion: 1,
+                                                  timeStart: thetime,
+                                                  timeFinish: thetime.setMinutes(200),
+                                                  sendedPromotion: 1
+                                                }
+                                            PromotionModel.updatePromotion(actPromotion, promotion3.idPromotion, (err){
+                                              if(err) {
+                                                throw(err)
+                                              }
+                                              else{
+                                                //mandar SMS
+                                                sms.phone(_user[0].phone)
+                                                sms.mess(local.localName+': Hace tiempo que no vienes a nuestro local y tenemos una promocion para ti. Para enterarte accede a este link:\n' +  body )
+                                                sms.mandarSMS()
+                                              }
+                                            })
+                                          }
+                                        })
+                                      }, 460000)
+
+
+                                      //Generar time Out de la primera promoción
+                                      setTimeout(() => {
+                                        //Generar short URL para la promoción
+                                        short.shorturl("http://yamiapp.co/promocion/"+_user[0].phone+"/"+code.code, (err, body) => {
+                                          if (err) {
+                                            throw(err)
+                                          }
+                                          else {
+                                            //mandar SMS
+                                            sms.phone(_user[0].phone)
+                                            sms.mess(local.localName+': Hace tiempo que no vienes a nuestros locales y tenemos una promocion para ti. Para enterarte accede a este link:\n' +  body )
+                                            sms.mandarSMS()
+                                          }
+                                        })
+                                      }, 360000)
+
+                                    }
+                                  }
+                                })
 
                                 //Generar short URL para la ruleta
                                 short.shorturl("http://yamiapp.co/ruleta/"+_user[0].phone+"/"+code.code, (err, body) => {

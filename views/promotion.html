@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+  <html ng-app="app">
+    <head>
+      <meta charset="utf-8">
+      <title>#{localName} - Promoción</title>
+      <meta name="viewport" content-type="application/javascript" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+      <link rel="stylesheet" type="text/css" href="../../../../../css/bootstrap.min.css">
+      <link rel="stylesheet" text="text/css" href="../../../../../css/prize.css">
+    </head>
+    <body>
+      <form name="promoConfirmed" action="" method="POST">
+        <div class="yami">
+          <div class="form-group">
+            <img src="#{localLogo}" alt="Logo local" class="img-responsive center-block" height="100" width="100">
+              <img src="#{promotionImage}" class="img-responsive" height="200" width="700" alt="Premio">
+            if numberType == 1
+              div(class='')
+                h2(class='text-center') <small> ven con #{promotion} amig@/s </small>
+                h2(class='text-center') Y llévate un/@s #{giftName}
+            if numberType == 2
+              div(class='')
+                h2(class='text-center') <small> compra un mínimo de $#{promotion} </small>
+                h2(class='text-center') Y llévate un/@s #{giftName}
+            if numberType == 3
+              div(class='')
+                h2(class='text-center') <small> Felicidades tienes un #{promotion}% de descuento </small>
+                h2(class='text-center') En un/@s #{giftName}
+            <button class="btn btn-success btn-lg" type"submit">Confirmar</button><br><br>
+
+            <img src="../../../../../img/Powered-By-Yami.png" alt="Powered By Yami" class="img-resposive center-block" height="25" width="80">
+          </div>
+        </div>
+
+      </form>
+
+      <script type="text/javascript" src="../../../../../js/jquery-3.2.1.js"></script>
+      <script type="text/javascript" src="../../../../../js/angular.min.js"></script>
+      <script type="text/javascript" src="../../../../../js/bootstrap.min.js"></script>
+    </body>
+  </html>
