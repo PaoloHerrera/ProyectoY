@@ -30,12 +30,16 @@
                 h2(class='text-center') En #{giftName}
             <button class="btn btn-success btn-lg" type"submit">Canjear</button><br><br>
 
+            div(ng-controller='TimeCtrl')
+              <p> {{ clock | date:'medium'}} </p>
+
             <img src="../../../../../img/Powered-By-Yami.png" alt="Powered By Yami" class="img-resposive center-block" height="25" width="80">
           </div>
         </div>
 
       </form>
       <script type="text/javascript" src="../../../../../js/angular.min.js"></script>
+      <script type="text/javascript" src="../../../../../js/clock.js"></script>
       <script src="https://code.angularjs.org/1.6.4/angular-route.min.js"></script>
       <script src="https://code.angularjs.org/1.6.4/angular-resource.min.js"></script>
       <link rel="stylesheet" type="text/css" href="http://www.shieldui.com/shared/components/latest/css/light-bootstrap/all.min.css" />
