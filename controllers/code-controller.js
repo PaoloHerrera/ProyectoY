@@ -163,7 +163,7 @@ CodeController.getCode = (req, res, next) => {
                                           }
                                           else {
                                             let thetime = new Date()
-                                            thetime.setMinutes(200)
+                                            thetime.setMinutes(300)
                                             let actPromotion = {
                                                   activePromotion: 1,
                                                   timeStart: new Date(),
@@ -194,7 +194,7 @@ CodeController.getCode = (req, res, next) => {
                                           }
                                           else {
                                             let thetime = new Date()
-                                            thetime.setMinutes(200)
+                                            thetime.setMinutes(400)
                                             let actPromotion = {
                                                   activePromotion: 1,
                                                   timeStart: new Date(),
@@ -225,7 +225,7 @@ CodeController.getCode = (req, res, next) => {
                                           }
                                           else {
                                             let thetime = new Date()
-                                            thetime.setMinutes(200)
+                                            thetime.setMinutes(500)
                                             let actPromotion = {
                                                   activePromotion: 1,
                                                   timeStart: new Date(),

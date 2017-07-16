@@ -71,6 +71,9 @@ PromotionController.addForm = (req, res, next) => {
                                 let local = _rows[0]
 
                                 res.render('promotion', {
+                                  phone: phone,
+                                  code: code,
+                                  idPromotion: promotion.idPromotion,
                                   promotionImage: promo.promotionImage,
                                   giftName: promo.giftName,
                                   numberType: promo.numberType,
