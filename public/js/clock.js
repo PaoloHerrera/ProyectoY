@@ -1,18 +1,13 @@
-(function() {
-  'use strict';
+var app = angular.module('clock', []);
 
-  angular
-    .module('app', [])
-    .controller('TimeCtrl', ['$scope','$timeout', function($scope,$timeout) {
-      $scope.clock = "loading clock..."; // initialise the time variable
-      $scope.tickInterval = 1000 //ms
+app.controller('MainCtrl', function($scope,$timeout,dateFilter) {
 
-      var tick = function() {
-          $scope.clock = Date.now() // get the current time
-          $timeout(tick, $scope.tickInterval); // reset the timer
-        }
+  $scope.updateTime = function(){
+      $timeout(function(){
+        $scope.theclock = (dateFilter(new Date(), 'hh:mm:ss'));
+        $scope.updateTime();
+    },1000);
+  };
 
-        // Start the timer
-        $timeout(tick, $scope.tickInterval);
-}])
-})();
+  $scope.updateTime();
+});
