@@ -5,7 +5,7 @@ var UserModel = require('../models/user-model'),
     PromotionModel = require('../models/promotion-model'),
     PromotionController = () => {}
 
-PromotionController.addForm = (req, res, next) = {
+PromotionController.addForm = (req, res, next) => {
   let phone = req.params.phone,
       code = req.params.code,
       promotion = {
