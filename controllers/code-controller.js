@@ -169,7 +169,7 @@ CodeController.getCode = (req, res, next) => {
                                                   timeFinish: thetime.setMinutes(200),
                                                   sendedPromotion: 1
                                                 }
-                                            PromotionModel.updatePromotion(actPromotion, promotion1.idPromotion, (err){
+                                            PromotionModel.updatePromotion(actPromotion, promotion1.idPromotion, (err) =>{
                                               if(err) {
                                                 throw(err)
                                               }
