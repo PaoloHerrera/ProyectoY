@@ -1,5 +1,4 @@
-(function() {
-  'use strict';
+'use strict'
 
   angular
     .module('app', [])
@@ -12,7 +11,6 @@
           $timeout(tick, $scope.tickInterval); // reset the timer
         }
 
-    // Start the timer
-    $timeout(tick, $scope.tickInterval);
+        // Start the timer
+        $timeout(tick, $scope.tickInterval);
 })
-})();
