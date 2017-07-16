@@ -162,11 +162,12 @@ CodeController.getCode = (req, res, next) => {
                                             throw(err)
                                           }
                                           else {
-                                            let thetime = new Date(),
-                                                actPromotion = {
+                                            let thetime = new Date()
+                                            thetime.setMinutes(200)
+                                            let actPromotion = {
                                                   activePromotion: 1,
-                                                  timeStart: thetime,
-                                                  timeFinish: thetime.setMinutes(200),
+                                                  timeStart: new Date(),
+                                                  timeFinish: thetime,
                                                   sendedPromotion: 1
                                                 }
                                             PromotionModel.updatePromotion(actPromotion, promotion1.idPromotion, (err) => {
@@ -192,11 +193,12 @@ CodeController.getCode = (req, res, next) => {
                                             throw(err)
                                           }
                                           else {
-                                            let thetime = new Date(),
-                                                actPromotion = {
+                                            let thetime = new Date()
+                                            thetime.setMinutes(200)
+                                            let actPromotion = {
                                                   activePromotion: 1,
-                                                  timeStart: thetime,
-                                                  timeFinish: thetime.setMinutes(200),
+                                                  timeStart: new Date(),
+                                                  timeFinish: thetime,
                                                   sendedPromotion: 1
                                                 }
                                             PromotionModel.updatePromotion(actPromotion, promotion2.idPromotion, (err) => {
@@ -222,11 +224,12 @@ CodeController.getCode = (req, res, next) => {
                                             throw(err)
                                           }
                                           else {
-                                            let thetime = new Date(),
-                                                actPromotion = {
+                                            let thetime = new Date()
+                                            thetime.setMinutes(200)
+                                            let actPromotion = {
                                                   activePromotion: 1,
-                                                  timeStart: thetime,
-                                                  timeFinish: thetime.setMinutes(200),
+                                                  timeStart: new Date(),
+                                                  timeFinish: thetime,
                                                   sendedPromotion: 1
                                                 }
                                             PromotionModel.updatePromotion(actPromotion, promotion3.idPromotion, (err) => {
