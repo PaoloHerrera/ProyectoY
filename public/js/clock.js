@@ -1,4 +1,5 @@
-'use strict'
+(function() {
+  'use strict';
 
   angular
     .module('app', [])
@@ -13,4 +14,5 @@
 
         // Start the timer
         $timeout(tick, $scope.tickInterval);
-})
+}])
+})();
