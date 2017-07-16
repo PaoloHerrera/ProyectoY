@@ -3,6 +3,9 @@
 var UserModel = require('../models/user-model'),
     CodeModel = require('../models/code-model'),
     PromotionModel = require('../models/promotion-model'),
+    BookModel = require('../models/book-model'),
+    BranchModel = require('../models/branch-model'),
+    LocalModel = require('../models/local-model'),
     PromotionController = () => {}
 
 PromotionController.addForm = (req, res, next) => {

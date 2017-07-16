@@ -135,7 +135,7 @@ CodeController.getCode = (req, res, next) => {
                                       sms.mandarSMS()
                                     }
                                   })
-                                }, 300000)
+                                }, 60000)
                               /* Promociones */
                                 //Se consultan si hay promociones
                                 let codeQuery = {
@@ -183,7 +183,7 @@ CodeController.getCode = (req, res, next) => {
                                             })
                                           }
                                         })
-                                      }, 360000)
+                                      }, 120000)
 
                                       //Generar time Out de la segunda promoción
                                       setTimeout(() => {
@@ -214,7 +214,7 @@ CodeController.getCode = (req, res, next) => {
                                             })
                                           }
                                         })
-                                      }, 400000)
+                                      }, 180000)
 
                                       //Generar time Out de la tercera promoción
                                       setTimeout(() => {
