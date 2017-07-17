@@ -1,4 +1,6 @@
 
+console.log(date)
+console.log(new Date())
 var app = angular.module('countdown', []);
 
 app.controller('CountdownCtrl', function($scope) {
