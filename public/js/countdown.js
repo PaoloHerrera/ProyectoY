@@ -1,8 +1,10 @@
 var app = angular.module('countdown', []);
 
-app.controller('CountdownCtrl', function($scope) {
+app.value('serverData', window.serverData);)
 
-  $scope.timePromo = date;
+app.controller('CountdownCtrl',['serverData', function($scope, serverData) {
+
+  $scope.timePromo = serverData;
 
   $scope.timeTill = {};
   var updateClock = function(){
