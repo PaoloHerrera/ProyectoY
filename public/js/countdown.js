@@ -7,7 +7,7 @@ app.controller('CountdownCtrl', function($scopecle) {
   $scope.timeTill = {};
   var updateClock = function(){
       $scope.timenow = new Date();
-      $scope.seconds = ($scope.timePromo – $scope.timenow) / 1000;
+      $scope.seconds = ($scope.timePromo - $scope.timenow) / 1000;
 
       $scope.timeTill = {
         daysLeft: parseInt($scope.seconds / 86400),
