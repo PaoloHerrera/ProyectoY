@@ -79,7 +79,7 @@ PromotionController.addForm = (req, res, next) => {
                                   numberType: promo.numberType,
                                   promotion: promo.promotion,
                                   timeFinish: promo.timeFinish,
-                                  timeNow: new Date(),
+                                  timeStart: promo.timeStart,
                                   localName: local.localName,
                                   localLogo: local.localLogo
                                 })
@@ -99,6 +99,125 @@ PromotionController.addForm = (req, res, next) => {
           }
         }
       })
+    }
+  })
+}
+
+PromotionController.promotionConfirm = (req, res, next) => {
+  let phone = req.params.phone,
+      code = req.params.code,
+      promotion = {
+        idPromotion: req.params.idPromotion
+      }
+
+  //Verifica si se canjeó en el tiempo
+  PromotionModel.getPromotion(promotion, (err, promotionRow) => {
+    if(err){
+      throw(err)
+    } else {
+      let timenow = new Date(),
+          timeFinish = promotionRow[0].timeFinish,
+          timeDif = timeFinish - timenow
+
+      if(timeDif >= 0){
+        console.log('Premio canjeado a tiempo')
+        let actPromo = {
+          timeReward: timenow,
+          activePromotion: 0,
+          redeemedPromotion: 1
+        }
+
+        //actualiza el estado de la promoción
+        PromotionModel.updatePromotion(actPromo, promotion.idPromotion, (err) => {
+          if(err){
+            throw(err)
+          } else{
+            //extrae los datos del código
+            CodeModel.getCode(code, (err, codeRow) => {
+              if(err){
+                throw(err)
+              } else {
+                let bookId = codeRow[0].idBook
+                //Extrae los datos del talonario
+                BookModel.getBook(bookId, (err, bookRow) => {
+                  if(err){
+                    throw(err)
+                  } else {
+                    let branchId = bookRow[0].idBranch
+                    //Extrae los datos de la sucursal
+                    BranchModel.getBranch(branchId, (err, branchRow) => {
+                      if(err){
+                        throw(err)
+                      } else {
+                        let localId = branchRow[0].idLocal
+                        //Extrae los datos del local
+                        LocalModel.getLocal(localId, (err, localRow) => {
+                          if(err){
+                            throw(err)
+                          } else {
+
+                            res.render('promotionSuccess', {
+                              localName: localRow[0].localName,
+                              localLogo: localRow[0].localLogo,
+                              promotionImage: promotionRow[0].promotionImage
+                            })
+                          }
+                        })
+                      }
+                    })
+                  }
+                })
+              }
+            })
+          }
+        })
+      }
+      else {
+        console.log('Premio canjeado fuera de tiempo')
+        let actPromo = {
+          activePromotion: 0
+        }
+
+        //actualiza el estado de la promoción
+        PromotionModel.updatePromotion(actPromo, promotion.idPromotion, (err) => {
+          if(err){
+            throw(err)
+          } else{
+            //extrae los datos del código
+            CodeModel.getCode(code, (err, codeRow) => {
+              if(err){
+                throw(err)
+              } else {
+                let bookId = codeRow[0].idBook
+                //Extrae los datos del talonario
+                BookModel.getBook(bookId, (err, bookRow) => {
+                  if(err){
+                    throw(err)
+                  } else {
+                    let branchId = bookRow[0].idBranch
+                    //Extrae los datos de la sucursal
+                    BranchModel.getBranch(branchId, (err, branchRow) => {
+                      if(err){
+                        throw(err)
+                      } else {
+                        let localId = branchRow[0].idLocal
+                        //Extrae los datos del local
+                        LocalModel.getLocal(localId, (err, localRow) => {
+                          if(err){
+                            throw(err)
+                          } else {
+                            res.send('Lo sentimos usted no ha canjeado a tiempo su promoción')
+                          }
+                        })
+                      }
+                    })
+                  }
+                })
+              }
+            })
+          }
+        })
+      }
     }
   })
 }

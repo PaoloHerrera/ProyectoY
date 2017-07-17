@@ -33,6 +33,8 @@ router
 
       .get('/promocion/:phone/:code/:idPromotion', PromotionController.addForm)
 
+      .post('/promocion/:phone/:code/:idPromotion', PromotionController.promotionConfirm)
+
       .use(YamiController.error404)
 
 module.exports = router

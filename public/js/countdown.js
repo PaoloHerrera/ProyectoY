@@ -6,7 +6,7 @@ app.controller('CountdownCtrl', function($scope) {
 
   $scope.timeTill = {};
   var updateClock = function(){
-      $scope.timenow = new Date(dateNow);
+      $scope.timenow = new Date();
       $scope.seconds = ($scope.timePromo - $scope.timenow) / 1000;
 
       $scope.timeTill = {
