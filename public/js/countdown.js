@@ -2,13 +2,11 @@ var app = angular.module('countdown', []);
 
 app.controller('CountdownCtrl', function($scopecle) {
 
-  $scope.timePromo = {
-    date: new Date(2017, 12, 31, 23, 60)
-  }
+  $scope.timePromo = new Date(2017, 12, 31, 23, 60)
 
   $scope.timeTill = {};
   var updateClock = function(){
-      $scope.seconds = ($scope.timePromo.date – new Date()) / 1000;
+      $scope.seconds = ($scope.timePromo – new Date()) / 1000;
 
       $scope.timeTill = {
         daysLeft: parseInt($scope.seconds / 86400),
