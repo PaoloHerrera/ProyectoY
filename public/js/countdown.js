@@ -4,7 +4,7 @@ app.value('serverData', window.serverData);
 
 app.controller('CountdownCtrl',['serverData', function($scope, serverData) {
 
-  console.log(serverData)
+  console.log(serverData);
 
   $scope.timePromo = serverData;
 
@@ -24,4 +24,4 @@ app.controller('CountdownCtrl',['serverData', function($scope, serverData) {
       $scope.$apply(updateClock);
       }, 1000);
       updateClock();
-    });
+    }]);
