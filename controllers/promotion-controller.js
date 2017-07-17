@@ -79,6 +79,7 @@ PromotionController.addForm = (req, res, next) => {
                                   numberType: promo.numberType,
                                   promotion: promo.promotion,
                                   timeFinish: promo.timeFinish,
+                                  timeNow: new Date(),
                                   localName: local.localName,
                                   localLogo: local.localLogo
                                 })
