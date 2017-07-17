@@ -29,9 +29,8 @@
                 h2(class='text-center') <small> Felicidades tienes un #{promotion}% de descuento </small>
                 h2(class='text-center') En #{giftName}
             <button class="btn btn-success btn-lg" type"submit">Canjear</button><br><br>
-
-            div(ng-controller='MainCtrl')
-              <p> {{ theclock}} </p>
+)
+            <timer end-time="#{timeFinish}">{{days}} días, {{hours}} horas, {{minutes}} minutos, {{seconds}} segundos.</timer>
 
             <img src="../../../../../img/Powered-By-Yami.png" alt="Powered By Yami" class="img-resposive center-block" height="25" width="80">
           </div>
@@ -39,6 +38,7 @@
 
       </form>
       <script type="text/javascript" src="../../../../../js/angular.min.js"></script>
+      <script type="text/javascript" src="https://raw.githubusercontent.com/siddii/angular-timer/master/dist/angular-timer.min.js"></script>
       <script type="text/javascript" src="../../../../../js/clock.js"></script>
       <script src="https://code.angularjs.org/1.6.4/angular-route.min.js"></script>
       <script src="https://code.angularjs.org/1.6.4/angular-resource.min.js"></script>
