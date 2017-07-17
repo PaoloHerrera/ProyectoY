@@ -183,7 +183,7 @@ CodeController.getCode = (req, res, next) => {
                                             })
                                           }
                                         })
-                                      }, 60000)
+                                      }, 360000)
 
                                       //Generar time Out de la segunda promoción
                                       setTimeout(() => {
@@ -214,7 +214,7 @@ CodeController.getCode = (req, res, next) => {
                                             })
                                           }
                                         })
-                                      }, 120000)
+                                      }, 420000)
 
                                       //Generar time Out de la tercera promoción
                                       setTimeout(() => {
@@ -245,7 +245,7 @@ CodeController.getCode = (req, res, next) => {
                                             })
                                           }
                                         })
-                                      }, 180000)
+                                      }, 480000)
 
                                     }
                                   }
