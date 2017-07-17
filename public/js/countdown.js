@@ -22,4 +22,4 @@ app.controller('CountdownCtrl', function($scope) {
       $scope.$apply(updateClock);
       }, 1000);
       updateClock();
-    }]);
+    });
