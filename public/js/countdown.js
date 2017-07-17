@@ -5,7 +5,7 @@ var app = angular.module('countdown', []);
 
 app.controller('CountdownCtrl', function($scope) {
   $scope.timePromo = new Date(date);
-  $scope.timePromo.setMinutes(date.getMinutes - date.getTimezoneOffset());
+  $scope.timePromo.setMinutes(date.getMinutes() - date.getTimezoneOffset());
 
   $scope.timeTill = {};
   var updateClock = function(){
