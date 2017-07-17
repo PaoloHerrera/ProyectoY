@@ -29,8 +29,9 @@
                 h2(class='text-center') <small> Felicidades tienes un #{promotion}% de descuento </small>
                 h2(class='text-center') En #{giftName}
             <button class="btn btn-success btn-lg" type"submit">Canjear</button><br><br>
-            <p> Te quedan {{timeTill.daysLeft}} días, {{timeTill.hoursLeft}} horas, {{timeTill.minutesLeft}} minutos, {{timeTill.secondsLeft}} segundos.</p>
-            <p> Para canjear</p>
+            div(ng-controller='CountdownCtrl')
+              <p> Te quedan {{timeTill.daysLeft}} días, {{timeTill.hoursLeft}} horas, {{timeTill.minutesLeft}} minutos, {{timeTill.secondsLeft}} segundos.</p>
+              <p> Para canjear</p>
 
             <img src="../../../../../img/Powered-By-Yami.png" alt="Powered By Yami" class="img-resposive center-block" height="25" width="80">
           </div>
