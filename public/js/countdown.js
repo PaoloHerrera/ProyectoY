@@ -1,6 +1,6 @@
 var app = angular.module('countdown', []);
 
-app.value('serverData', window.serverData);)
+app.value('serverData', window.serverData);
 
 app.controller('CountdownCtrl',['serverData', function($scope, serverData) {
 
