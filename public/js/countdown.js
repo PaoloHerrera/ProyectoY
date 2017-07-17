@@ -1,3 +1,5 @@
+console.log(hello);
+
 var app = angular.module('countdown', []);
 
 app.controller('CountdownCtrl', function($scope, hello) {
