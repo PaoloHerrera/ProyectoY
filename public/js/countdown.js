@@ -1,6 +1,6 @@
 var app = angular.module('countdown', []);
 
-app.controller('CountdownCtrl', function($scopecle) {
+app.controller('CountdownCtrl', function($scope) {
 
   $scope.timePromo = new Date(2017, 12, 31, 23, 60);
 
