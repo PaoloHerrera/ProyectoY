@@ -1,5 +1,5 @@
 
-console.log(new Date(date))
+console.log(date)
 console.log(new Date())
 var app = angular.module('countdown', []);
 
