@@ -1,9 +1,8 @@
-console.log(date);
 
 var app = angular.module('countdown', []);
 
 app.controller('CountdownCtrl', function($scope) {
-  $scope.timePromo = new Date(2017, 12, 31, 23, 60);
+  $scope.timePromo = date;
 
   $scope.timeTill = {};
   var updateClock = function(){
