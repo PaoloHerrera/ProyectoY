@@ -155,7 +155,7 @@ CodeController.getCode = (req, res, next) => {
 
                                       //** Ahora manda las promociones para cada código en un tiempo determinado. **Ver esto después, cuando se tire a producción
                                       //Generar time Out de la primera promoción
-                                      setTimeout(() => {
+                                      /*setTimeout(() => {
                                         //Generar short URL para la promoción
                                         short.shorturl("http://yamiapp.co/promocion/"+_user[0].phone+"/"+code.code+"/"+promotion1.idPromotion, (err, body) => {
                                           if (err) {
@@ -183,7 +183,7 @@ CodeController.getCode = (req, res, next) => {
                                             })
                                           }
                                         })
-                                      }, 360000)
+                                      }, 360000)*/
 
                                       //Generar time Out de la segunda promoción
                                       setTimeout(() => {
@@ -194,7 +194,7 @@ CodeController.getCode = (req, res, next) => {
                                           }
                                           else {
                                             let thetime = new Date()
-                                            thetime.setMinutes(400)
+                                            thetime.setMinutes(1445)
                                             let actPromotion = {
                                                   activePromotion: 1,
                                                   timeStart: new Date(),
@@ -214,10 +214,10 @@ CodeController.getCode = (req, res, next) => {
                                             })
                                           }
                                         })
-                                      }, 420000)
+                                      }, 100000)
 
                                       //Generar time Out de la tercera promoción
-                                      setTimeout(() => {
+                                      /*setTimeout(() => {
                                         //Generar short URL para la promoción
                                         short.shorturl("http://yamiapp.co/promocion/"+_user[0].phone+"/"+code.code+"/"+promotion3.idPromotion, (err, body) => {
                                           if (err) {
@@ -245,7 +245,7 @@ CodeController.getCode = (req, res, next) => {
                                             })
                                           }
                                         })
-                                      }, 480000)
+                                      }, 480000)*/
 
                                     }
                                   }
